@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dtsKardex" targetNamespace="http://tempuri.org/dtsKardex.xsd" xmlns:mstns="http://tempuri.org/dtsKardex.xsd" xmlns="http://tempuri.org/dtsKardex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SeePosConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SeePosConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.KardexInventario.My.MySettings.GlobalReference.Default.SeePosConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dtsKardex" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dtsKardex" msprop:Generator_UserDSName="dtsKardex">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vs_Kardex" msprop:Generator_TableClassName="vs_KardexDataTable" msprop:Generator_TableVarName="tablevs_Kardex" msprop:Generator_TablePropName="vs_Kardex" msprop:Generator_RowDeletingName="vs_KardexRowDeleting" msprop:Generator_RowChangingName="vs_KardexRowChanging" msprop:Generator_RowEvHandlerName="vs_KardexRowChangeEventHandler" msprop:Generator_RowDeletedName="vs_KardexRowDeleted" msprop:Generator_UserTableName="vs_Kardex" msprop:Generator_RowChangedName="vs_KardexRowChanged" msprop:Generator_RowEvArgName="vs_KardexRowChangeEvent" msprop:Generator_RowClassName="vs_KardexRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IdInventario" msprop:Generator_ColumnVarNameInTable="columnIdInventario" msprop:Generator_ColumnPropNameInRow="IdInventario" msprop:Generator_ColumnPropNameInTable="IdInventarioColumn" msprop:Generator_UserColumnName="IdInventario" type="xs:long" />
+              <xs:element name="Inventario" msprop:Generator_ColumnVarNameInTable="columnInventario" msprop:Generator_ColumnPropNameInRow="Inventario" msprop:Generator_ColumnPropNameInTable="InventarioColumn" msprop:Generator_UserColumnName="Inventario" type="xs:string" minOccurs="0" />
+              <xs:element name="Tipo" msprop:Generator_ColumnVarNameInTable="columnTipo" msprop:Generator_ColumnPropNameInRow="Tipo" msprop:Generator_ColumnPropNameInTable="TipoColumn" msprop:Generator_UserColumnName="Tipo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="17" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdLinea" msprop:Generator_ColumnVarNameInTable="columnIdLinea" msprop:Generator_ColumnPropNameInRow="IdLinea" msprop:Generator_ColumnPropNameInTable="IdLineaColumn" msprop:Generator_UserColumnName="IdLinea" type="xs:long" />
+              <xs:element name="IdDocumento" msprop:Generator_ColumnVarNameInTable="columnIdDocumento" msprop:Generator_ColumnPropNameInRow="IdDocumento" msprop:Generator_ColumnPropNameInTable="IdDocumentoColumn" msprop:Generator_UserColumnName="IdDocumento" type="xs:long" />
+              <xs:element name="Documento" msprop:Generator_ColumnVarNameInTable="columnDocumento" msprop:Generator_ColumnPropNameInRow="Documento" msprop:Generator_ColumnPropNameInTable="DocumentoColumn" msprop:Generator_UserColumnName="Documento" type="xs:long" minOccurs="0" />
+              <xs:element name="IdMoneda" msprop:Generator_ColumnVarNameInTable="columnIdMoneda" msprop:Generator_ColumnPropNameInRow="IdMoneda" msprop:Generator_ColumnPropNameInTable="IdMonedaColumn" msprop:Generator_UserColumnName="IdMoneda" type="xs:int" />
+              <xs:element name="IdBodega" msprop:Generator_ColumnVarNameInTable="columnIdBodega" msprop:Generator_ColumnPropNameInRow="IdBodega" msprop:Generator_ColumnPropNameInTable="IdBodegaColumn" msprop:Generator_UserColumnName="IdBodega" type="xs:long" />
+              <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:double" />
+              <xs:element name="Costo" msprop:Generator_ColumnVarNameInTable="columnCosto" msprop:Generator_ColumnPropNameInRow="Costo" msprop:Generator_ColumnPropNameInTable="CostoColumn" msprop:Generator_UserColumnName="Costo" type="xs:double" />
+              <xs:element name="TipoCambio" msprop:Generator_ColumnVarNameInTable="columnTipoCambio" msprop:Generator_ColumnPropNameInRow="TipoCambio" msprop:Generator_ColumnPropNameInTable="TipoCambioColumn" msprop:Generator_UserColumnName="TipoCambio" type="xs:double" />
+              <xs:element name="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Existencia" msprop:Generator_ColumnVarNameInTable="columnExistencia" msprop:Generator_ColumnPropNameInRow="Existencia" msprop:Generator_ColumnPropNameInTable="ExistenciaColumn" msprop:Generator_UserColumnName="Existencia" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="CostoPromedio" msprop:Generator_ColumnVarNameInTable="columnCostoPromedio" msprop:Generator_ColumnPropNameInRow="CostoPromedio" msprop:Generator_ColumnPropNameInTable="CostoPromedioColumn" msprop:Generator_UserColumnName="CostoPromedio" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="ExistenciaBodega" msprop:Generator_ColumnVarNameInTable="columnExistenciaBodega" msprop:Generator_ColumnPropNameInRow="ExistenciaBodega" msprop:Generator_ColumnPropNameInTable="ExistenciaBodegaColumn" msprop:Generator_UserColumnName="ExistenciaBodega" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="CostoPromedioBodega" msprop:Generator_ColumnVarNameInTable="columnCostoPromedioBodega" msprop:Generator_ColumnPropNameInRow="CostoPromedioBodega" msprop:Generator_ColumnPropNameInTable="CostoPromedioBodegaColumn" msprop:Generator_UserColumnName="CostoPromedioBodega" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="SaldoBodega" msprop:Generator_ColumnVarNameInTable="columnSaldoBodega" msprop:Generator_ColumnPropNameInRow="SaldoBodega" msprop:Generator_ColumnPropNameInTable="SaldoBodegaColumn" msprop:Generator_UserColumnName="SaldoBodega" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Suma" msprop:Generator_ColumnVarNameInTable="columnSuma" msprop:Generator_ColumnPropNameInRow="Suma" msprop:Generator_ColumnPropNameInTable="SumaColumn" msprop:Generator_UserColumnName="Suma" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vs_Inventario" msprop:Generator_TableClassName="vs_InventarioDataTable" msprop:Generator_TableVarName="tablevs_Inventario" msprop:Generator_TablePropName="vs_Inventario" msprop:Generator_RowDeletingName="vs_InventarioRowDeleting" msprop:Generator_RowChangingName="vs_InventarioRowChanging" msprop:Generator_RowEvHandlerName="vs_InventarioRowChangeEventHandler" msprop:Generator_RowDeletedName="vs_InventarioRowDeleted" msprop:Generator_UserTableName="vs_Inventario" msprop:Generator_RowChangedName="vs_InventarioRowChanged" msprop:Generator_RowEvArgName="vs_InventarioRowChangeEvent" msprop:Generator_RowClassName="vs_InventarioRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo" type="xs:long" />
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Existencia" msprop:Generator_ColumnVarNameInTable="columnExistencia" msprop:Generator_ColumnPropNameInRow="Existencia" msprop:Generator_ColumnPropNameInTable="ExistenciaColumn" msprop:Generator_UserColumnName="Existencia" type="xs:double" />
+              <xs:element name="CostoPromedio" msprop:Generator_ColumnVarNameInTable="columnCostoPromedio" msprop:Generator_ColumnPropNameInRow="CostoPromedio" msprop:Generator_ColumnPropNameInTable="CostoPromedioColumn" msprop:Generator_UserColumnName="CostoPromedio" type="xs:double" />
+              <xs:element name="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:string" minOccurs="0" />
+              <xs:element name="IdBodega" msprop:Generator_ColumnVarNameInTable="columnIdBodega" msprop:Generator_ColumnPropNameInRow="IdBodega" msprop:Generator_ColumnPropNameInTable="IdBodegaColumn" msprop:Generator_UserColumnName="IdBodega" type="xs:long" minOccurs="0" />
+              <xs:element name="ExistenciaBodega" msprop:Generator_ColumnVarNameInTable="columnExistenciaBodega" msprop:Generator_ColumnPropNameInRow="ExistenciaBodega" msprop:Generator_ColumnPropNameInTable="ExistenciaBodegaColumn" msprop:Generator_UserColumnName="ExistenciaBodega" type="xs:double" minOccurs="0" />
+              <xs:element name="CostoPromedioBodega" msprop:Generator_ColumnVarNameInTable="columnCostoPromedioBodega" msprop:Generator_ColumnPropNameInRow="CostoPromedioBodega" msprop:Generator_ColumnPropNameInTable="CostoPromedioBodegaColumn" msprop:Generator_UserColumnName="CostoPromedioBodega" type="xs:double" minOccurs="0" />
+              <xs:element name="SaldoFinalBodega" msprop:Generator_ColumnVarNameInTable="columnSaldoFinalBodega" msprop:Generator_ColumnPropNameInRow="SaldoFinalBodega" msprop:Generator_ColumnPropNameInTable="SaldoFinalBodegaColumn" msprop:Generator_UserColumnName="SaldoFinalBodega" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="ExistenciaCorregida" msprop:Generator_ColumnVarNameInTable="columnExistenciaCorregida" msprop:Generator_ColumnPropNameInRow="ExistenciaCorregida" msprop:Generator_ColumnPropNameInTable="ExistenciaCorregidaColumn" msprop:Generator_UserColumnName="ExistenciaCorregida" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="CostoPromedioCorregido" msprop:Generator_ColumnVarNameInTable="columnCostoPromedioCorregido" msprop:Generator_ColumnPropNameInRow="CostoPromedioCorregido" msprop:Generator_ColumnPropNameInTable="CostoPromedioCorregidoColumn" msprop:Generator_UserColumnName="CostoPromedioCorregido" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="SaldoCorregido" msprop:Generator_ColumnVarNameInTable="columnSaldoCorregido" msprop:Generator_ColumnPropNameInRow="SaldoCorregido" msprop:Generator_ColumnPropNameInTable="SaldoCorregidoColumn" msprop:Generator_UserColumnName="SaldoCorregido" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="ExistenciaBodegaCorregida" msprop:Generator_ColumnVarNameInTable="columnExistenciaBodegaCorregida" msprop:Generator_ColumnPropNameInRow="ExistenciaBodegaCorregida" msprop:Generator_ColumnPropNameInTable="ExistenciaBodegaCorregidaColumn" msprop:Generator_UserColumnName="ExistenciaBodegaCorregida" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="CostPromedioBodegaCorregida" msprop:Generator_ColumnVarNameInTable="columnCostPromedioBodegaCorregida" msprop:Generator_ColumnPropNameInRow="CostPromedioBodegaCorregida" msprop:Generator_ColumnPropNameInTable="CostPromedioBodegaCorregidaColumn" msprop:Generator_UserColumnName="CostPromedioBodegaCorregida" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="SaldoBodegaCorregido" msprop:Generator_ColumnVarNameInTable="columnSaldoBodegaCorregido" msprop:Generator_ColumnPropNameInRow="SaldoBodegaCorregido" msprop:Generator_ColumnPropNameInTable="SaldoBodegaCorregidoColumn" msprop:Generator_UserColumnName="SaldoBodegaCorregido" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="DifExistencia" msprop:Generator_ColumnVarNameInTable="columnDifExistencia" msprop:Generator_ColumnPropNameInRow="DifExistencia" msprop:Generator_ColumnPropNameInTable="DifExistenciaColumn" msprop:Generator_UserColumnName="DifExistencia" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="DifCostoPromedio" msprop:Generator_ColumnVarNameInTable="columnDifCostoPromedio" msprop:Generator_ColumnPropNameInRow="DifCostoPromedio" msprop:Generator_ColumnPropNameInTable="DifCostoPromedioColumn" msprop:Generator_UserColumnName="DifCostoPromedio" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="DifExistenciaBodega" msprop:Generator_ColumnVarNameInTable="columnDifExistenciaBodega" msprop:Generator_ColumnPropNameInRow="DifExistenciaBodega" msprop:Generator_ColumnPropNameInTable="DifExistenciaBodegaColumn" msprop:Generator_UserColumnName="DifExistenciaBodega" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="DifCostoPromedioBodega" msprop:Generator_ColumnVarNameInTable="columnDifCostoPromedioBodega" msprop:Generator_ColumnPropNameInRow="DifCostoPromedioBodega" msprop:Generator_ColumnPropNameInTable="DifCostoPromedioBodegaColumn" msprop:Generator_UserColumnName="DifCostoPromedioBodega" type="xs:double" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
