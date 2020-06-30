@@ -4,11 +4,35 @@ Public Class LogicaKardex
     Inherits DatosKardex
     Sub spRevisar(ByRef bw As BackgroundWorker)
         Dim i As Integer = 1
-        For Each linea As vs_KardexRow In vs_Kardex
-            spCalcularLinea(linea)
+        For Each producto As vs_InventarioRow In vs_Inventario
+            Existencia = 0
+            Saldo = 0
+            CostoPromedio = 0
+            ExistenciaBodega = 0
+            SaldoBodega = 0
+            CostoPromedioBodega = 0
+            Dim datos = From linea In vs_Kardex
+                        Where linea.IdInventario = producto.Codigo
+                        Select linea
+            For Each kardex As vs_KardexRow In datos
+                spCalcularLinea(kardex)
+            Next
+            producto.ExistenciaCorregida = Existencia
+            producto.SaldoCorregido = Saldo
+            producto.CostoPromedioCorregido = CostoPromedio
+            producto.DifCostoPromedio = Math.Abs(producto.CostoPromedio - producto.CostoPromedioCorregido)
+            producto.DifExistencia = Math.Abs(producto.Existencia - producto.ExistenciaCorregida)
+
+            producto.SaldoBodegaCorregido = SaldoBodega
+            producto.ExistenciaBodegaCorregida = ExistenciaBodega
+            producto.CostPromedioBodegaCorregida = CostoPromedioBodega
+            producto.DifCostoPromedioBodega = Math.Abs(producto.CostoPromedioBodega - producto.CostPromedioBodegaCorregida)
+            producto.DifExistenciaBodega = Math.Abs(producto.ExistenciaBodega - producto.ExistenciaBodegaCorregida)
             bw.ReportProgress((i / vs_Kardex.Count) * 100)
             i += 1
         Next
+
+
     End Sub
     Private currentIdInventario As Integer = -1
     Private Existencia As Double = 0
@@ -23,34 +47,22 @@ Public Class LogicaKardex
     Public Sub spCorregir(ByRef bw As BackgroundWorker)
         Dim i As Integer = 1
         For Each linea As vs_InventarioRow In vs_Inventario
-            spActualizarDatos(linea)
-            bw.ReportProgress((i / vs_Kardex.Count) * 100)
+            If linea.CostoPromedio <> linea.CostoPromedioCorregido Or linea.CostPromedioBodegaCorregida <> linea.CostoPromedioBodega Then
+                spActualizarDatos(linea)
+            End If
+            bw.ReportProgress((i / vs_Inventario.Count) * 100)
             i += 1
         Next
     End Sub
     Private Sub spCalcularLinea(linea As dtsKardex.vs_KardexRow)
-        If currentIdInventario <> linea.IdInventario Then
-            spActualizar()
-            currentIdInventario = linea.IdInventario
-            currentIdBodega = linea.IdBodega
-            Existencia = 0
-            Saldo = 0
-            CostoPromedio = 0
-            ExistenciaBodega = 0
-            SaldoBodega = 0
-            CostoPromedioBodega = 0
-        End If
-        If currentIdBodega <> linea.IdBodega Then
-            spActualizar()
-            currentIdBodega = linea.IdBodega
-            ExistenciaBodega = 0
-            SaldoBodega = 0
-            CostoPromedioBodega = 0
-        End If
         Dim costoMovimiento As Double = 0
         If linea.Suma Then
             Existencia += linea.Cantidad
-            costoMovimiento = linea.Cantidad * linea.Costo
+            If linea.Tipo.Equals("DEVOLUCION COMPRA") Then
+                costoMovimiento = linea.Cantidad * CostoPromedio
+            Else
+                costoMovimiento = linea.Cantidad * linea.Costo
+            End If
             Saldo += costoMovimiento
             ExistenciaBodega += linea.Cantidad
             SaldoBodega += costoMovimiento
@@ -63,9 +75,12 @@ Public Class LogicaKardex
         End If
         If Existencia <> 0 Then
             CostoPromedio = Saldo / Existencia
-            CostoPromedioBodega = SaldoBodega / ExistenciaBodega
         Else
             CostoPromedio = 0
+        End If
+        If ExistenciaBodega <> 0 Then
+            CostoPromedioBodega = SaldoBodega / ExistenciaBodega
+        Else
             CostoPromedioBodega = 0
         End If
         linea.Saldo = Saldo
@@ -76,34 +91,7 @@ Public Class LogicaKardex
         linea.SaldoBodega = SaldoBodega
 
     End Sub
-    Private Sub spActualizar()
-        If currentIdInventario <> -1 And currentIdBodega <> -1 Then
-            For Each linea As vs_InventarioRow In vs_Inventario
-                If linea.Codigo = currentIdInventario Then
-                    linea.ExistenciaCorregida = Existencia
-                    linea.SaldoCorregido = Saldo
-                    linea.CostoPromedioCorregido = CostoPromedio
-                    linea.DifCostoPromedio = Math.Abs(linea.CostoPromedio - linea.CostoPromedioCorregido)
-                    linea.DifExistencia = Math.Abs(linea.Existencia - linea.ExistenciaCorregida)
-                End If
-                If linea.Codigo = currentIdInventario And linea.IdBodega = currentIdBodega Then
-                    linea.ExistenciaCorregida = Existencia
-                    linea.SaldoCorregido = Saldo
-                    linea.CostoPromedioCorregido = CostoPromedio
-                    linea.DifCostoPromedio = Math.Abs(linea.CostoPromedio - linea.CostoPromedioCorregido)
-                    linea.DifExistencia = Math.Abs(linea.Existencia - linea.ExistenciaCorregida)
 
-                    linea.SaldoBodegaCorregido = SaldoBodega
-                    linea.ExistenciaBodegaCorregida = ExistenciaBodega
-                    linea.CostPromedioBodegaCorregida = CostoPromedioBodega
-                    linea.DifCostoPromedioBodega = Math.Abs(linea.CostoPromedioBodega - linea.CostPromedioBodegaCorregida)
-                    linea.DifExistenciaBodega = Math.Abs(linea.ExistenciaBodega - linea.ExistenciaBodegaCorregida)
-                    Exit For
-                End If
-            Next
-        End If
-
-    End Sub
     Public Function SaldoBodegaTotal() As String
         Dim saldoBodega As Double = 0
         For Each linea As vs_InventarioRow In vs_Inventario

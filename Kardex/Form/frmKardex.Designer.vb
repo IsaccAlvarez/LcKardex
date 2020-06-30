@@ -71,6 +71,8 @@ Partial Class frmKardex
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.bwCorregir = New System.ComponentModel.BackgroundWorker()
+        Me.txtFiltro = New System.Windows.Forms.TextBox()
+        Me.btFiltrar = New System.Windows.Forms.Button()
         CType(Me.dgvKardex, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsKardex, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DtsKardex, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -456,11 +458,29 @@ Partial Class frmKardex
         '
         Me.bwCorregir.WorkerReportsProgress = True
         '
+        'txtFiltro
+        '
+        Me.txtFiltro.Location = New System.Drawing.Point(322, 48)
+        Me.txtFiltro.Name = "txtFiltro"
+        Me.txtFiltro.Size = New System.Drawing.Size(189, 20)
+        Me.txtFiltro.TabIndex = 12
+        '
+        'btFiltrar
+        '
+        Me.btFiltrar.Location = New System.Drawing.Point(517, 45)
+        Me.btFiltrar.Name = "btFiltrar"
+        Me.btFiltrar.Size = New System.Drawing.Size(151, 26)
+        Me.btFiltrar.TabIndex = 13
+        Me.btFiltrar.Text = "Filtro"
+        Me.btFiltrar.UseVisualStyleBackColor = True
+        '
         'frmKardex
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1070, 557)
+        Me.Controls.Add(Me.btFiltrar)
+        Me.Controls.Add(Me.txtFiltro)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtSaldoAcumulado)
@@ -533,4 +553,6 @@ Partial Class frmKardex
     Friend WithEvents Label1 As Label
     Friend WithEvents Button3 As Button
     Friend WithEvents bwCorregir As System.ComponentModel.BackgroundWorker
+    Friend WithEvents txtFiltro As TextBox
+    Friend WithEvents btFiltrar As Button
 End Class

@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 
 Public Class DatosKardex
     Inherits dtsKardex
-    Sub spDatos()
+    Protected Friend Sub spDatos()
         spComprobarBD()
         Dim consulta As String = "SELECT k.Fecha, i.Descripcion AS Inventario, k.IdInventario, k.Tipo, k.IdLinea, k.IdDocumento, k.Documento, k.IdMoneda, k.IdBodega, k.Cantidad, k.Costo, k.TipoCambio,k.Suma, 0 AS CostoPromedio, 0 As Existencia, 0 As Saldo FROM vs_Kardex AS k INNER JOIN  Inventario AS i ON k.IdInventario = i.Codigo WHERE i.Servicio = 0 AND i.Inhabilitado = 0 ORDER BY k.IdInventario, k.Fecha"
         Dim sqlCo As New SqlClient.SqlCommand
@@ -12,26 +12,27 @@ Public Class DatosKardex
 
         sqlCo.CommandText = "Select * From vs_Inventario"
         clsDatos.consulta(sqlCo, vs_Inventario, "Proveeduria")
+
+
+
     End Sub
-    Sub spActualizarDatos(linea As vs_InventarioRow)
-        Dim consulta As String = ""
+    Friend Sub spActualizarDatos(linea As vs_InventarioRow)
+
         Dim sqlCo As New SqlClient.SqlCommand
-        sqlCo.CommandText = "UPDATE [dbo].[ArticulosXBodega]  SET [Existencia] = @Existencia,[Costo_Promedio] = @Costo,[Saldo_Final] = @SaldoFinal WHERE [Codigo] = @Codigo AND [IdBodega] =@IdBodega"
-        sqlCo.Parameters.AddWithValue("@Existencia", linea.ExistenciaBodegaCorregida)
+        sqlCo.CommandText = "UPDATE [dbo].[ArticulosXBodega]  SET [Costo_Promedio] = @Costo,[Saldo_Final] = @SaldoFinal WHERE [Codigo] = @Codigo AND [IdBodega] =@IdBodega"
         sqlCo.Parameters.AddWithValue("@Costo", linea.CostPromedioBodegaCorregida)
         sqlCo.Parameters.AddWithValue("@SaldoFinal", linea.SaldoBodegaCorregido)
         sqlCo.Parameters.AddWithValue("@Codigo", linea.Codigo)
         sqlCo.Parameters.AddWithValue("@IdBodega", linea.IdBodega)
         clsDatos.cambio(sqlCo, "Proveeduria")
-        sqlCo.CommandText = "UPDATE Inventario SET Existencia = @ExistenciaGeneral , CostoPromedio = @CostoPromedioGeneral Where Codigo = @Codigo"
-        sqlCo.Parameters.AddWithValue("@ExistenciaGeneral", linea.ExistenciaCorregida)
+        sqlCo.CommandText = "UPDATE Inventario SET CostoPromedio = @CostoPromedioGeneral Where Codigo = @Codigo"
         sqlCo.Parameters.AddWithValue("@CostoPromedioGeneral", linea.CostoPromedioCorregido)
         clsDatos.cambio(sqlCo, "Proveeduria")
 
 
 
     End Sub
-    Sub spComprobarBD()
+    Private Sub spComprobarBD()
 
         Dim preguntarExiste As String = "SELECT * FROM sysobjects WHERE name='vs_Inventario'"
         Dim dt As New DataTable

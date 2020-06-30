@@ -1,4 +1,6 @@
-﻿Public Class Kardex
+﻿Imports System.ComponentModel
+
+Public Class Kardex
     Public Shared Sub abrir(Optional ByRef pan As Panel = Nothing)
         If pan Is Nothing Then
             Dim frm As New frmKardex
@@ -13,6 +15,17 @@
             frm.Show()
         End If
     End Sub
+    Public Shared Sub actualizarCostos(ByRef bw As BackgroundWorker, ByRef estado As String)
+        Dim logica As New LogicaKardex
+        estado = "Consultado..."
+        logica.spDatos()
+        estado = "Revisando..."
+        logica.spRevisar(bw)
+        estado = "Corrigiendo..."
+        logica.spCorregir(bw)
+
+    End Sub
+
     Public Shared Function abrirDiferencia() As String
         Dim filtro As String = ""
         Dim frm As New frmDiferencia()

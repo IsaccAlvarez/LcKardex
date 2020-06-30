@@ -89,4 +89,8 @@ Public Class frmKardex
 
         End If
     End Sub
+
+    Private Sub btFiltrar_Click(sender As Object, e As EventArgs) Handles btFiltrar.Click
+        bsCorreciones.Filter = txtFiltro.Text
+    End Sub
 End Class
