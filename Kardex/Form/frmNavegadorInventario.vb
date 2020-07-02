@@ -300,4 +300,9 @@ Public Class frmNavegadorInventario
     Private Sub btImprimir_Click(sender As Object, e As EventArgs) Handles btImprimir.Click
         Navegador.AbrirReporte(resultados, "Codigo = '" & bsInventario.Current("Codigo") & "' AND " & fnFiltroReporte(), fnFiltroReporteVisual)
     End Sub
+
+    Private Sub btCerrar_Click(sender As Object, e As EventArgs) Handles btCerrar.Click
+        Close()
+
+    End Sub
 End Class

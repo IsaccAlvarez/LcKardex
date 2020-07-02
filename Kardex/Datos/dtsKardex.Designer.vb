@@ -1569,6 +1569,12 @@ Partial Public Class dtsKardex
         
         Private columnFamilia As Global.System.Data.DataColumn
         
+        Private columnUltimoCosto As Global.System.Data.DataColumn
+        
+        Private columnFamiliaNombre As Global.System.Data.DataColumn
+        
+        Private columnSubFamiliaNombre As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -1685,6 +1691,30 @@ Partial Public Class dtsKardex
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property UltimoCostoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUltimoCosto
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property FamiliaNombreColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFamiliaNombre
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SubFamiliaNombreColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSubFamiliaNombre
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1721,9 +1751,9 @@ Partial Public Class dtsKardex
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addvs_NavegadorInventarioRow(ByVal Codigo As String, ByVal Barras As String, ByVal Descripcion As String, ByVal Existencia As Double, ByVal CostoPromedio As Double, ByVal Saldo As Double, ByVal PrecioVenta As Double, ByVal SubFamilia As String, ByVal Bodega As String, ByVal Familia As String) As vs_NavegadorInventarioRow
+        Public Overloads Function Addvs_NavegadorInventarioRow(ByVal Codigo As String, ByVal Barras As String, ByVal Descripcion As String, ByVal Existencia As Double, ByVal CostoPromedio As Double, ByVal Saldo As Double, ByVal PrecioVenta As Double, ByVal SubFamilia As String, ByVal Bodega As String, ByVal Familia As String, ByVal UltimoCosto As Double, ByVal FamiliaNombre As String, ByVal SubFamiliaNombre As String) As vs_NavegadorInventarioRow
             Dim rowvs_NavegadorInventarioRow As vs_NavegadorInventarioRow = CType(Me.NewRow,vs_NavegadorInventarioRow)
-            Dim columnValuesArray() As Object = New Object() {Codigo, Barras, Descripcion, Existencia, CostoPromedio, Saldo, PrecioVenta, SubFamilia, Bodega, Familia}
+            Dim columnValuesArray() As Object = New Object() {Codigo, Barras, Descripcion, Existencia, CostoPromedio, Saldo, PrecioVenta, SubFamilia, Bodega, Familia, UltimoCosto, FamiliaNombre, SubFamiliaNombre}
             rowvs_NavegadorInventarioRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvs_NavegadorInventarioRow)
             Return rowvs_NavegadorInventarioRow
@@ -1756,6 +1786,9 @@ Partial Public Class dtsKardex
             Me.columnSubFamilia = MyBase.Columns("SubFamilia")
             Me.columnBodega = MyBase.Columns("Bodega")
             Me.columnFamilia = MyBase.Columns("Familia")
+            Me.columnUltimoCosto = MyBase.Columns("UltimoCosto")
+            Me.columnFamiliaNombre = MyBase.Columns("FamiliaNombre")
+            Me.columnSubFamiliaNombre = MyBase.Columns("SubFamiliaNombre")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1781,11 +1814,20 @@ Partial Public Class dtsKardex
             MyBase.Columns.Add(Me.columnBodega)
             Me.columnFamilia = New Global.System.Data.DataColumn("Familia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFamilia)
+            Me.columnUltimoCosto = New Global.System.Data.DataColumn("UltimoCosto", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUltimoCosto)
+            Me.columnFamiliaNombre = New Global.System.Data.DataColumn("FamiliaNombre", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFamiliaNombre)
+            Me.columnSubFamiliaNombre = New Global.System.Data.DataColumn("SubFamiliaNombre", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSubFamiliaNombre)
             Me.columnCodigo.AllowDBNull = false
             Me.columnDescripcion.AllowDBNull = false
             Me.columnDescripcion.MaxLength = 255
             Me.columnExistencia.AllowDBNull = false
             Me.columnCostoPromedio.AllowDBNull = false
+            Me.columnUltimoCosto.DefaultValue = CType(0R,Double)
+            Me.columnFamiliaNombre.DefaultValue = CType("",String)
+            Me.columnSubFamiliaNombre.DefaultValue = CType("",String)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4286,6 +4328,54 @@ Partial Public Class dtsKardex
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property UltimoCosto() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablevs_NavegadorInventario.UltimoCostoColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'UltimoCosto' de la tabla 'vs_NavegadorInventario' es DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevs_NavegadorInventario.UltimoCostoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property FamiliaNombre() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevs_NavegadorInventario.FamiliaNombreColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FamiliaNombre' de la tabla 'vs_NavegadorInventario' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevs_NavegadorInventario.FamiliaNombreColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SubFamiliaNombre() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevs_NavegadorInventario.SubFamiliaNombreColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SubFamiliaNombre' de la tabla 'vs_NavegadorInventario' es"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevs_NavegadorInventario.SubFamiliaNombreColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsBarrasNull() As Boolean
             Return Me.IsNull(Me.tablevs_NavegadorInventario.BarrasColumn)
         End Function
@@ -4354,6 +4444,42 @@ Partial Public Class dtsKardex
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetFamiliaNull()
             Me(Me.tablevs_NavegadorInventario.FamiliaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsUltimoCostoNull() As Boolean
+            Return Me.IsNull(Me.tablevs_NavegadorInventario.UltimoCostoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetUltimoCostoNull()
+            Me(Me.tablevs_NavegadorInventario.UltimoCostoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsFamiliaNombreNull() As Boolean
+            Return Me.IsNull(Me.tablevs_NavegadorInventario.FamiliaNombreColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetFamiliaNombreNull()
+            Me(Me.tablevs_NavegadorInventario.FamiliaNombreColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSubFamiliaNombreNull() As Boolean
+            Return Me.IsNull(Me.tablevs_NavegadorInventario.SubFamiliaNombreColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSubFamiliaNombreNull()
+            Me(Me.tablevs_NavegadorInventario.SubFamiliaNombreColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

@@ -73,6 +73,8 @@ Partial Class frmKardex
         Me.bwCorregir = New System.ComponentModel.BackgroundWorker()
         Me.txtFiltro = New System.Windows.Forms.TextBox()
         Me.btFiltrar = New System.Windows.Forms.Button()
+        Me.btActualizarGanancia = New System.Windows.Forms.Button()
+        Me.bwCorregirGanancia = New System.ComponentModel.BackgroundWorker()
         CType(Me.dgvKardex, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsKardex, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DtsKardex, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -474,11 +476,25 @@ Partial Class frmKardex
         Me.btFiltrar.Text = "Filtro"
         Me.btFiltrar.UseVisualStyleBackColor = True
         '
+        'btActualizarGanancia
+        '
+        Me.btActualizarGanancia.Location = New System.Drawing.Point(165, 41)
+        Me.btActualizarGanancia.Name = "btActualizarGanancia"
+        Me.btActualizarGanancia.Size = New System.Drawing.Size(151, 26)
+        Me.btActualizarGanancia.TabIndex = 14
+        Me.btActualizarGanancia.Text = "Actualizar Ganancia"
+        Me.btActualizarGanancia.UseVisualStyleBackColor = True
+        '
+        'bwCorregirGanancia
+        '
+        Me.bwCorregirGanancia.WorkerReportsProgress = True
+        '
         'frmKardex
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1070, 557)
+        Me.Controls.Add(Me.btActualizarGanancia)
         Me.Controls.Add(Me.btFiltrar)
         Me.Controls.Add(Me.txtFiltro)
         Me.Controls.Add(Me.Button3)
@@ -555,4 +571,6 @@ Partial Class frmKardex
     Friend WithEvents bwCorregir As System.ComponentModel.BackgroundWorker
     Friend WithEvents txtFiltro As TextBox
     Friend WithEvents btFiltrar As Button
+    Friend WithEvents btActualizarGanancia As Button
+    Friend WithEvents bwCorregirGanancia As System.ComponentModel.BackgroundWorker
 End Class

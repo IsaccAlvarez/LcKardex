@@ -23,8 +23,20 @@ Public Class Kardex
         logica.spRevisar(bw)
         estado = "Corrigiendo..."
         logica.spCorregir(bw)
+        estado = "Ganancias..."
+        logica.spCorregirGanacia(bw)
 
     End Sub
+    Public Shared Sub actualizarGanancia(ByRef bw As BackgroundWorker, ByRef estado As String)
+        Dim logica As New LogicaKardex
+        estado = "Consultado..."
+        logica.spDatos()
+        estado = "Revisando..."
+        logica.spRevisar(bw)
+        estado = "Ganancias..."
+        logica.spCorregirGanacia(bw)
+    End Sub
+
 
     Public Shared Function abrirDiferencia() As String
         Dim filtro As String = ""

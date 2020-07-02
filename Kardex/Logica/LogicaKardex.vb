@@ -54,6 +54,20 @@ Public Class LogicaKardex
             i += 1
         Next
     End Sub
+    Public Sub spCorregirGanacia(ByRef bw As BackgroundWorker)
+
+        Dim i As Integer = 1
+        Dim datos = From linea In vs_Kardex
+                        Where linea.Tipo = "VENTAS"
+                        Select linea
+
+        For Each kardex As vs_KardexRow In datos
+            spActualizarDatosGanacia(kardex)
+            bw.ReportProgress((i / datos.Count) * 100)
+            i += 1
+        Next
+
+    End Sub
     Private Sub spCalcularLinea(linea As dtsKardex.vs_KardexRow)
         Dim costoMovimiento As Double = 0
         If linea.Suma Then

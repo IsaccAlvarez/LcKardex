@@ -93,4 +93,28 @@ Public Class frmKardex
     Private Sub btFiltrar_Click(sender As Object, e As EventArgs) Handles btFiltrar.Click
         bsCorreciones.Filter = txtFiltro.Text
     End Sub
+
+    Private Sub btActualizarGanancia_Click(sender As Object, e As EventArgs) Handles btActualizarGanancia.Click
+        Me.Enabled = False
+        pbar.Visible = True
+
+        bwCorregirGanancia.RunWorkerAsync()
+
+
+    End Sub
+
+    Private Sub bwCorregirGanancia_DoWork(sender As Object, e As DoWorkEventArgs) Handles bwCorregirGanancia.DoWork
+        Kardex.actualizarGanancia(bwCorregirGanancia, "")
+    End Sub
+
+    Private Sub bwCorregirGanancia_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles bwCorregirGanancia.ProgressChanged
+        pbar.Value = e.ProgressPercentage
+
+    End Sub
+
+    Private Sub bwCorregirGanancia_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bwCorregirGanancia.RunWorkerCompleted
+        Me.Enabled = True
+        Me.pbar.Visible = False
+
+    End Sub
 End Class

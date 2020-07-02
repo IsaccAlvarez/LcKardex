@@ -32,6 +32,14 @@ Public Class DatosKardex
 
 
     End Sub
+    Friend Sub spActualizarDatosGanacia(kardex As vs_KardexRow)
+        Dim sqlCo As New SqlClient.SqlCommand
+        sqlCo.CommandText = "UPDATE [dbo].[Ventas_Detalle] SET [Precio_Costo] = @Costo WHERE id_venta_detalle = @Id"
+        sqlCo.Parameters.AddWithValue("@Id", kardex.IdLinea)
+        sqlCo.Parameters.AddWithValue("@Costo", kardex.CostoPromedio)
+        clsDatos.cambio(sqlCo, "Proveeduria")
+
+    End Sub
     Private Sub spComprobarBD()
 
         Dim preguntarExiste As String = "SELECT * FROM sysobjects WHERE name='vs_Inventario'"

@@ -120,6 +120,12 @@
     <Compile Include="Form\frmReporte.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\frmReportesInventario.Designer.vb">
+      <DependentUpon>frmReportesInventario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmReportesInventario.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmTest.Designer.vb">
       <DependentUpon>frmTest.vb</DependentUpon>
     </Compile>
@@ -129,6 +135,7 @@
     <Compile Include="Kardex.vb" />
     <Compile Include="Logica\LogicaKardex.vb" />
     <Compile Include="Logica\LogicaNavegador.vb" />
+    <Compile Include="Logica\LogicaReportesInventario.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -146,7 +153,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Navegador.vb" />
+    <Compile Include="ReportesInventario.vb" />
     <Compile Include="Reporte\ReporteIndividualKardex.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte\ReporteInventarioExistencia.vb">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -162,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmReporte.resx">
       <DependentUpon>frmReporte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmReportesInventario.resx">
+      <DependentUpon>frmReportesInventario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTest.resx">
       <DependentUpon>frmTest.vb</DependentUpon>
@@ -198,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reporte\ReporteIndividualKardex.rpt" />
+    <EmbeddedResource Include="Reporte\ReporteInventarioExistencia.rpt" />
     <None Include="Resources\search.png" />
   </ItemGroup>
   <ItemGroup>

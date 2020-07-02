@@ -31,4 +31,5 @@
         clsDatos.consulta(sqlCo, vs_NavegadorInventarioKardex, "Proveeduria")
     End Sub
 
+
 End Class

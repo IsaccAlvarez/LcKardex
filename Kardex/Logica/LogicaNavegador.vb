@@ -13,7 +13,6 @@ Public Class LogicaNavegador
             bw.ReportProgress((i / vs_NavegadorInventarioKardex.Count) * 100)
             i += 1
         Next
-
     End Sub
 
     Public Sub spRecalculoHistorico(ByRef bw As BackgroundWorker, ByVal Fecha As DateTime)
@@ -34,7 +33,6 @@ Public Class LogicaNavegador
     Private ExistenciaBodega As Double = 0
     Private SaldoBodega As Double = 0
     Private CostoPromedioBodega As Double = 0
-
     Private Sub spCalcularLinea(linea As vs_NavegadorInventarioKardexRow)
         If currentIdInventario <> linea.IdInventario Then
             spActualizar()
@@ -81,10 +79,8 @@ Public Class LogicaNavegador
         linea.CostoPromedioBodega = CostoPromedioBodega
         linea.ExistenciaBodega = ExistenciaBodega
         linea.SaldoBodega = SaldoBodega
-
     End Sub
     Private update As Boolean = False
-
     Private Sub spActualizar()
         If update Then
             If currentIdInventario <> -1 And currentIdBodega <> -1 Then
