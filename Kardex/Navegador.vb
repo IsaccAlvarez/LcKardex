@@ -15,6 +15,17 @@ Public Class Navegador
             frm.Show()
         End If
     End Sub
+    Public Shared Sub abrirMDI(ByRef mdi As Form)
+        Dim frm As New frmNavegadorInventario
+        frm.WindowState = FormWindowState.Normal
+        frm.MdiParent = mdi
+        frm.Show()
+    End Sub
+    Public Shared Function formulario() As frmNavegadorInventario
+        Dim frm As New frmNavegadorInventario
+        Return frm
+
+    End Function
     Private Shared logica As New LogicaNavegador
     Public Shared Function Resultados(ByRef bw As BackgroundWorker) As LogicaNavegador
         logica.Cargar(bw)

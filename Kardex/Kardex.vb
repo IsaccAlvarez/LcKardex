@@ -15,6 +15,16 @@ Public Class Kardex
             frm.Show()
         End If
     End Sub
+    Public Shared Function formulario() As frmKardex
+        Dim frm As New frmKardex
+        Return frm
+
+    End Function
+    Public Shared Sub abrirMDI(ByRef mdi As Form)
+        Dim frm As New frmKardex
+        frm.MdiParent = mdi
+        frm.Show()
+    End Sub
     Public Shared Sub actualizarCostos(ByRef bw As BackgroundWorker, ByRef estado As String)
         Dim logica As New LogicaKardex
         estado = "Consultado..."

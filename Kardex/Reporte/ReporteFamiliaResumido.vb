@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class ReporteInventarioExistencia
+Public Class ReporteFamiliaResumido
     Inherits ReportClass
 
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class ReporteInventarioExistencia
 
     Public Overrides Property ResourceName() As String
         Get
-            Return "ReporteInventarioExistencia.rpt"
+            Return "ReporteFamiliaResumido.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class ReporteInventarioExistencia
 
     Public Overrides Property FullResourceName() As String
         Get
-            Return "LcPymesKardex.ReporteInventarioExistencia.rpt"
+            Return "LcPymesKardex.ReporteFamiliaResumido.rpt"
         End Get
         Set
             'Do nothing
@@ -174,7 +174,7 @@ Public Class ReporteInventarioExistencia
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>
-Public Class CachedReporteInventarioExistencia
+Public Class CachedReporteFamiliaResumido
     Inherits Component
     Implements ICachedReport
 
@@ -216,7 +216,7 @@ Public Class CachedReporteInventarioExistencia
     End Property
 
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As ReporteInventarioExistencia = New ReporteInventarioExistencia()
+        Dim rpt As ReporteFamiliaResumido = New ReporteFamiliaResumido()
         rpt.Site = Me.Site
         Return rpt
     End Function

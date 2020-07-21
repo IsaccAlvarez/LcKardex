@@ -23,21 +23,21 @@ Partial Class frmNavegadorInventario
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.lbFiltro = New System.Windows.Forms.Label()
         Me.btCerrar = New System.Windows.Forms.Button()
@@ -53,7 +53,7 @@ Partial Class frmNavegadorInventario
         Me.SaldoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrecioVentaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.bsInventario = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DtsKardex = New KardexInventario.dtsKardex()
+        Me.DtsKardex = New LcPymesKardex.dtsKardex()
         Me.dgvInventarioKardex = New System.Windows.Forms.DataGridView()
         Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -96,6 +96,8 @@ Partial Class frmNavegadorInventario
         Me.btActualizar = New System.Windows.Forms.Button()
         Me.bwActualizar = New System.ComponentModel.BackgroundWorker()
         Me.btImprimir = New System.Windows.Forms.Button()
+        Me.btMinimizar = New System.Windows.Forms.Button()
+        Me.btMax = New System.Windows.Forms.Button()
         CType(Me.scDatos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.scDatos.Panel1.SuspendLayout()
         Me.scDatos.Panel2.SuspendLayout()
@@ -135,7 +137,7 @@ Partial Class frmNavegadorInventario
         'btCerrar
         '
         Me.btCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btCerrar.BackgroundImage = Global.KardexInventario.My.Resources.Resources.close
+        Me.btCerrar.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.close
         Me.btCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btCerrar.FlatAppearance.BorderSize = 0
         Me.btCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -147,7 +149,7 @@ Partial Class frmNavegadorInventario
         '
         'btFiltro
         '
-        Me.btFiltro.BackgroundImage = Global.KardexInventario.My.Resources.Resources.filter
+        Me.btFiltro.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.filter
         Me.btFiltro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btFiltro.FlatAppearance.BorderSize = 0
         Me.btFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -161,7 +163,7 @@ Partial Class frmNavegadorInventario
         'btBuscar
         '
         Me.btBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btBuscar.BackgroundImage = Global.KardexInventario.My.Resources.Resources.search
+        Me.btBuscar.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.search
         Me.btBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btBuscar.FlatAppearance.BorderSize = 0
         Me.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -200,25 +202,25 @@ Partial Class frmNavegadorInventario
         Me.dvgInventario.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dvgInventario.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.dvgInventario.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dvgInventario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dvgInventario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
         Me.dvgInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dvgInventario.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDataGridViewTextBoxColumn, Me.BarrasDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.ExistenciaDataGridViewTextBoxColumn, Me.CostoPromedioDataGridViewTextBoxColumn, Me.SaldoDataGridViewTextBoxColumn, Me.PrecioVentaDataGridViewTextBoxColumn})
         Me.dvgInventario.DataSource = Me.bsInventario
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dvgInventario.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle21.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle21.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
+        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
+        DataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dvgInventario.DefaultCellStyle = DataGridViewCellStyle21
         Me.dvgInventario.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dvgInventario.EnableHeadersVisualStyles = False
         Me.dvgInventario.GridColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
@@ -255,10 +257,10 @@ Partial Class frmNavegadorInventario
         'ExistenciaDataGridViewTextBoxColumn
         '
         Me.ExistenciaDataGridViewTextBoxColumn.DataPropertyName = "Existencia"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.ExistenciaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle17.Format = "N2"
+        DataGridViewCellStyle17.NullValue = Nothing
+        Me.ExistenciaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle17
         Me.ExistenciaDataGridViewTextBoxColumn.HeaderText = "Existencia"
         Me.ExistenciaDataGridViewTextBoxColumn.Name = "ExistenciaDataGridViewTextBoxColumn"
         Me.ExistenciaDataGridViewTextBoxColumn.ReadOnly = True
@@ -266,10 +268,10 @@ Partial Class frmNavegadorInventario
         'CostoPromedioDataGridViewTextBoxColumn
         '
         Me.CostoPromedioDataGridViewTextBoxColumn.DataPropertyName = "CostoPromedio"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.CostoPromedioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle18.Format = "N2"
+        DataGridViewCellStyle18.NullValue = Nothing
+        Me.CostoPromedioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle18
         Me.CostoPromedioDataGridViewTextBoxColumn.HeaderText = "CostoPromedio"
         Me.CostoPromedioDataGridViewTextBoxColumn.Name = "CostoPromedioDataGridViewTextBoxColumn"
         Me.CostoPromedioDataGridViewTextBoxColumn.ReadOnly = True
@@ -277,10 +279,10 @@ Partial Class frmNavegadorInventario
         'SaldoDataGridViewTextBoxColumn
         '
         Me.SaldoDataGridViewTextBoxColumn.DataPropertyName = "Saldo"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.SaldoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle19.Format = "N2"
+        DataGridViewCellStyle19.NullValue = Nothing
+        Me.SaldoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle19
         Me.SaldoDataGridViewTextBoxColumn.HeaderText = "Saldo"
         Me.SaldoDataGridViewTextBoxColumn.Name = "SaldoDataGridViewTextBoxColumn"
         Me.SaldoDataGridViewTextBoxColumn.ReadOnly = True
@@ -288,10 +290,10 @@ Partial Class frmNavegadorInventario
         'PrecioVentaDataGridViewTextBoxColumn
         '
         Me.PrecioVentaDataGridViewTextBoxColumn.DataPropertyName = "PrecioVenta"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.PrecioVentaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle20.Format = "N2"
+        DataGridViewCellStyle20.NullValue = Nothing
+        Me.PrecioVentaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle20
         Me.PrecioVentaDataGridViewTextBoxColumn.HeaderText = "P.Venta"
         Me.PrecioVentaDataGridViewTextBoxColumn.Name = "PrecioVentaDataGridViewTextBoxColumn"
         Me.PrecioVentaDataGridViewTextBoxColumn.ReadOnly = True
@@ -317,25 +319,25 @@ Partial Class frmNavegadorInventario
         Me.dgvInventarioKardex.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvInventarioKardex.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.dgvInventarioKardex.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvInventarioKardex.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle22.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle22.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
+        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvInventarioKardex.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle22
         Me.dgvInventarioKardex.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvInventarioKardex.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechaDataGridViewTextBoxColumn, Me.TipoDataGridViewTextBoxColumn, Me.DocumentoDataGridViewTextBoxColumn, Me.BodegaDataGridViewTextBoxColumn, Me.Nombre, Me.CantidadDataGridViewTextBoxColumn, Me.CostoPromedioDataGridViewTextBoxColumn1, Me.ExistenciaDataGridViewTextBoxColumn1, Me.SaldoDataGridViewTextBoxColumn1, Me.ExistenciaBodegaDataGridViewTextBoxColumn, Me.CostoPromedioBodegaDataGridViewTextBoxColumn, Me.SaldoBodegaDataGridViewTextBoxColumn, Me.Doc})
         Me.dgvInventarioKardex.DataSource = Me.bsInventarioKardex
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvInventarioKardex.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle30.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle30.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle30.ForeColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
+        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
+        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvInventarioKardex.DefaultCellStyle = DataGridViewCellStyle30
         Me.dgvInventarioKardex.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvInventarioKardex.EnableHeadersVisualStyles = False
         Me.dgvInventarioKardex.GridColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
@@ -391,10 +393,10 @@ Partial Class frmNavegadorInventario
         'CantidadDataGridViewTextBoxColumn
         '
         Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "N2"
-        DataGridViewCellStyle8.NullValue = Nothing
-        Me.CantidadDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle23.Format = "N2"
+        DataGridViewCellStyle23.NullValue = Nothing
+        Me.CantidadDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle23
         Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
         Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
         Me.CantidadDataGridViewTextBoxColumn.ReadOnly = True
@@ -403,10 +405,10 @@ Partial Class frmNavegadorInventario
         'CostoPromedioDataGridViewTextBoxColumn1
         '
         Me.CostoPromedioDataGridViewTextBoxColumn1.DataPropertyName = "CostoPromedio"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle9.Format = "N2"
-        DataGridViewCellStyle9.NullValue = Nothing
-        Me.CostoPromedioDataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle24.Format = "N2"
+        DataGridViewCellStyle24.NullValue = Nothing
+        Me.CostoPromedioDataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle24
         Me.CostoPromedioDataGridViewTextBoxColumn1.HeaderText = "CostoPromedio"
         Me.CostoPromedioDataGridViewTextBoxColumn1.Name = "CostoPromedioDataGridViewTextBoxColumn1"
         Me.CostoPromedioDataGridViewTextBoxColumn1.ReadOnly = True
@@ -415,10 +417,10 @@ Partial Class frmNavegadorInventario
         'ExistenciaDataGridViewTextBoxColumn1
         '
         Me.ExistenciaDataGridViewTextBoxColumn1.DataPropertyName = "Existencia"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "N2"
-        DataGridViewCellStyle10.NullValue = Nothing
-        Me.ExistenciaDataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle25.Format = "N2"
+        DataGridViewCellStyle25.NullValue = Nothing
+        Me.ExistenciaDataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle25
         Me.ExistenciaDataGridViewTextBoxColumn1.HeaderText = "Existencia"
         Me.ExistenciaDataGridViewTextBoxColumn1.Name = "ExistenciaDataGridViewTextBoxColumn1"
         Me.ExistenciaDataGridViewTextBoxColumn1.ReadOnly = True
@@ -427,10 +429,10 @@ Partial Class frmNavegadorInventario
         'SaldoDataGridViewTextBoxColumn1
         '
         Me.SaldoDataGridViewTextBoxColumn1.DataPropertyName = "Saldo"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.Format = "N2"
-        DataGridViewCellStyle11.NullValue = Nothing
-        Me.SaldoDataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle26.Format = "N2"
+        DataGridViewCellStyle26.NullValue = Nothing
+        Me.SaldoDataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle26
         Me.SaldoDataGridViewTextBoxColumn1.HeaderText = "Saldo"
         Me.SaldoDataGridViewTextBoxColumn1.Name = "SaldoDataGridViewTextBoxColumn1"
         Me.SaldoDataGridViewTextBoxColumn1.ReadOnly = True
@@ -439,10 +441,10 @@ Partial Class frmNavegadorInventario
         'ExistenciaBodegaDataGridViewTextBoxColumn
         '
         Me.ExistenciaBodegaDataGridViewTextBoxColumn.DataPropertyName = "ExistenciaBodega"
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.Format = "N2"
-        DataGridViewCellStyle12.NullValue = Nothing
-        Me.ExistenciaBodegaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle27.Format = "N2"
+        DataGridViewCellStyle27.NullValue = Nothing
+        Me.ExistenciaBodegaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle27
         Me.ExistenciaBodegaDataGridViewTextBoxColumn.HeaderText = "Exist.Bodega"
         Me.ExistenciaBodegaDataGridViewTextBoxColumn.Name = "ExistenciaBodegaDataGridViewTextBoxColumn"
         Me.ExistenciaBodegaDataGridViewTextBoxColumn.ReadOnly = True
@@ -451,10 +453,10 @@ Partial Class frmNavegadorInventario
         'CostoPromedioBodegaDataGridViewTextBoxColumn
         '
         Me.CostoPromedioBodegaDataGridViewTextBoxColumn.DataPropertyName = "CostoPromedioBodega"
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle13.Format = "N2"
-        DataGridViewCellStyle13.NullValue = Nothing
-        Me.CostoPromedioBodegaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle28.Format = "N2"
+        DataGridViewCellStyle28.NullValue = Nothing
+        Me.CostoPromedioBodegaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle28
         Me.CostoPromedioBodegaDataGridViewTextBoxColumn.HeaderText = "CostoPromedioBodega"
         Me.CostoPromedioBodegaDataGridViewTextBoxColumn.Name = "CostoPromedioBodegaDataGridViewTextBoxColumn"
         Me.CostoPromedioBodegaDataGridViewTextBoxColumn.ReadOnly = True
@@ -463,10 +465,10 @@ Partial Class frmNavegadorInventario
         'SaldoBodegaDataGridViewTextBoxColumn
         '
         Me.SaldoBodegaDataGridViewTextBoxColumn.DataPropertyName = "SaldoBodega"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle14.Format = "N2"
-        DataGridViewCellStyle14.NullValue = Nothing
-        Me.SaldoBodegaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle29.Format = "N2"
+        DataGridViewCellStyle29.NullValue = Nothing
+        Me.SaldoBodegaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle29
         Me.SaldoBodegaDataGridViewTextBoxColumn.HeaderText = "SaldoBodega"
         Me.SaldoBodegaDataGridViewTextBoxColumn.Name = "SaldoBodegaDataGridViewTextBoxColumn"
         Me.SaldoBodegaDataGridViewTextBoxColumn.ReadOnly = True
@@ -781,7 +783,7 @@ Partial Class frmNavegadorInventario
         '
         'btActualizar
         '
-        Me.btActualizar.BackgroundImage = Global.KardexInventario.My.Resources.Resources.refresh_update
+        Me.btActualizar.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.refresh_update
         Me.btActualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btActualizar.FlatAppearance.BorderSize = 0
         Me.btActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -798,7 +800,7 @@ Partial Class frmNavegadorInventario
         '
         'btImprimir
         '
-        Me.btImprimir.BackgroundImage = Global.KardexInventario.My.Resources.Resources.print
+        Me.btImprimir.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.print
         Me.btImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btImprimir.FlatAppearance.BorderSize = 0
         Me.btImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -809,6 +811,33 @@ Partial Class frmNavegadorInventario
         Me.btImprimir.TabIndex = 13
         Me.btImprimir.UseVisualStyleBackColor = True
         '
+        'btMinimizar
+        '
+        Me.btMinimizar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btMinimizar.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.minimize
+        Me.btMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btMinimizar.FlatAppearance.BorderSize = 0
+        Me.btMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btMinimizar.Location = New System.Drawing.Point(794, 8)
+        Me.btMinimizar.Name = "btMinimizar"
+        Me.btMinimizar.Size = New System.Drawing.Size(40, 40)
+        Me.btMinimizar.TabIndex = 14
+        Me.btMinimizar.UseVisualStyleBackColor = True
+        '
+        'btMax
+        '
+        Me.btMax.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btMax.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.expand
+        Me.btMax.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btMax.FlatAppearance.BorderSize = 0
+        Me.btMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btMax.Location = New System.Drawing.Point(748, 8)
+        Me.btMax.Name = "btMax"
+        Me.btMax.Size = New System.Drawing.Size(40, 40)
+        Me.btMax.TabIndex = 15
+        Me.btMax.Tag = "OFF"
+        Me.btMax.UseVisualStyleBackColor = True
+        '
         'frmNavegadorInventario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -816,6 +845,8 @@ Partial Class frmNavegadorInventario
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(886, 501)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btMax)
+        Me.Controls.Add(Me.btMinimizar)
         Me.Controls.Add(Me.btImprimir)
         Me.Controls.Add(Me.btActualizar)
         Me.Controls.Add(Me.lbProgreso)
@@ -916,4 +947,6 @@ Partial Class frmNavegadorInventario
     Friend WithEvents dtpFHasta As DateTimePicker
     Friend WithEvents dtpFDesde As DateTimePicker
     Friend WithEvents chFiltrarFechasDoc As CheckBox
+    Friend WithEvents btMinimizar As Button
+    Friend WithEvents btMax As Button
 End Class

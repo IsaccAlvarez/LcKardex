@@ -75,9 +75,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.KardexInventario.My.MySettings
+        Friend ReadOnly Property Settings() As Global.LcPymesKardex.My.MySettings
             Get
-                Return Global.KardexInventario.My.MySettings.Default
+                Return Global.LcPymesKardex.My.MySettings.Default
             End Get
         End Property
     End Module

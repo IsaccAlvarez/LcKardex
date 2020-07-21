@@ -9,23 +9,21 @@ Public Class frmKardex
     End Sub
     Private Sub IniciarRevision()
         Me.Enabled = False
-        logica.spDatos()
-        bsKardex.DataSource = logica
-        bsKardex.DataMember = logica.vs_Kardex.TableName
-
-        bsCorreciones.DataSource = logica
-        bsCorreciones.DataMember = logica.vs_Inventario.TableName
-
         pbar.Visible = True
         bwRevisar.RunWorkerAsync()
     End Sub
 
     Private Sub bwRevisar_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwRevisar.DoWork
+        logica.spDatos()
         logica.spRevisar(bwRevisar)
     End Sub
 
     Private Sub bwRevisar_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bwRevisar.RunWorkerCompleted
         pbar.Visible = False
+        bsKardex.DataSource = logica
+        bsKardex.DataMember = logica.vs_Kardex.TableName
+        bsCorreciones.DataSource = logica
+        bsCorreciones.DataMember = logica.vs_Inventario.TableName
         Me.Enabled = True
         txtSaldoAcumulado.Text = logica.SaldoBodegaTotal()
 
@@ -97,10 +95,7 @@ Public Class frmKardex
     Private Sub btActualizarGanancia_Click(sender As Object, e As EventArgs) Handles btActualizarGanancia.Click
         Me.Enabled = False
         pbar.Visible = True
-
         bwCorregirGanancia.RunWorkerAsync()
-
-
     End Sub
 
     Private Sub bwCorregirGanancia_DoWork(sender As Object, e As DoWorkEventArgs) Handles bwCorregirGanancia.DoWork
@@ -115,6 +110,10 @@ Public Class frmKardex
     Private Sub bwCorregirGanancia_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bwCorregirGanancia.RunWorkerCompleted
         Me.Enabled = True
         Me.pbar.Visible = False
+
+    End Sub
+
+    Private Sub frmKardex_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

@@ -4,7 +4,7 @@ Public Class clsConexion
     Public Shared Function Fn_Conector() As SqlConnection
         Dim _sqlconnection As New SqlConnection
         Try
-            _sqlconnection.ConnectionString = clsDatos.fn_StrConexionBase("Proveeduria")
+            _sqlconnection.ConnectionString = clsDatos.fn_StrConexionBase("SEEPOS")
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
@@ -20,6 +20,6 @@ Public Class clsConexion
     End Sub
 
     Public Shared Function fn_StrConexionBase(ByVal BD As String) As String
-        Return Configuracion.Claves.Conexion(BD)
+        Return GetSetting("SEESOFT", BD, "Conexion")
     End Function
 End Class

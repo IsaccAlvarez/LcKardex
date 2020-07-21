@@ -305,4 +305,20 @@ Public Class frmNavegadorInventario
         Close()
 
     End Sub
+
+    Private Sub btMinimizar_Click(sender As Object, e As EventArgs) Handles btMinimizar.Click
+        WindowState = FormWindowState.Minimized
+        Me.Text = "Navegador"
+    End Sub
+
+    Private Sub btMax_Click(sender As Object, e As EventArgs) Handles btMax.Click
+
+        If btMax.Tag.Equals("ON") Then
+            WindowState = FormWindowState.Normal
+            btMax.Tag = "OFF"
+        Else
+            WindowState = FormWindowState.Maximized
+            btMax.Tag = "ON"
+        End If
+    End Sub
 End Class

@@ -29,14 +29,13 @@ Partial Class frmReportesInventario
         Me.cbUbicacion = New System.Windows.Forms.ComboBox()
         Me.lbProveedor = New System.Windows.Forms.Label()
         Me.cbProveedor = New System.Windows.Forms.ComboBox()
-        Me.chFechaExistencia = New System.Windows.Forms.CheckBox()
         Me.dtpFechaExistencia = New System.Windows.Forms.DateTimePicker()
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.lbDescripcion = New System.Windows.Forms.Label()
         Me.lbFamilia = New System.Windows.Forms.Label()
         Me.cbFamilia = New System.Windows.Forms.ComboBox()
         Me.bsFamilia = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DtsKardex = New KardexInventario.dtsKardex()
+        Me.DtsKardex = New LcPymesKardex.dtsKardex()
         Me.btVer = New System.Windows.Forms.Button()
         Me.txtCantidad = New System.Windows.Forms.TextBox()
         Me.cbComparacion = New System.Windows.Forms.ComboBox()
@@ -51,6 +50,9 @@ Partial Class frmReportesInventario
         Me.btCerrar = New System.Windows.Forms.Button()
         Me.btFiltro = New System.Windows.Forms.Button()
         Me.btBuscar = New System.Windows.Forms.Button()
+        Me.btMax = New System.Windows.Forms.Button()
+        Me.btMinimizar = New System.Windows.Forms.Button()
+        Me.bwCargarReporte = New System.ComponentModel.BackgroundWorker()
         CType(Me.sc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.sc.Panel1.SuspendLayout()
         Me.sc.Panel2.SuspendLayout()
@@ -66,7 +68,7 @@ Partial Class frmReportesInventario
         Me.sc.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.sc.Location = New System.Drawing.Point(0, 51)
+        Me.sc.Location = New System.Drawing.Point(4, 57)
         Me.sc.Name = "sc"
         '
         'sc.Panel1
@@ -76,8 +78,8 @@ Partial Class frmReportesInventario
         'sc.Panel2
         '
         Me.sc.Panel2.Controls.Add(Me.crv)
-        Me.sc.Size = New System.Drawing.Size(891, 410)
-        Me.sc.SplitterDistance = 232
+        Me.sc.Size = New System.Drawing.Size(886, 395)
+        Me.sc.SplitterDistance = 226
         Me.sc.TabIndex = 0
         '
         'pnFiltro
@@ -87,8 +89,6 @@ Partial Class frmReportesInventario
         Me.pnFiltro.Controls.Add(Me.cbUbicacion)
         Me.pnFiltro.Controls.Add(Me.lbProveedor)
         Me.pnFiltro.Controls.Add(Me.cbProveedor)
-        Me.pnFiltro.Controls.Add(Me.chFechaExistencia)
-        Me.pnFiltro.Controls.Add(Me.dtpFechaExistencia)
         Me.pnFiltro.Controls.Add(Me.txtDescripcion)
         Me.pnFiltro.Controls.Add(Me.lbDescripcion)
         Me.pnFiltro.Controls.Add(Me.lbFamilia)
@@ -102,14 +102,14 @@ Partial Class frmReportesInventario
         Me.pnFiltro.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnFiltro.Location = New System.Drawing.Point(0, 0)
         Me.pnFiltro.Name = "pnFiltro"
-        Me.pnFiltro.Size = New System.Drawing.Size(232, 410)
+        Me.pnFiltro.Size = New System.Drawing.Size(226, 395)
         Me.pnFiltro.TabIndex = 0
         '
         'lbUbicacion
         '
         Me.lbUbicacion.AutoSize = True
         Me.lbUbicacion.ForeColor = System.Drawing.Color.White
-        Me.lbUbicacion.Location = New System.Drawing.Point(3, 310)
+        Me.lbUbicacion.Location = New System.Drawing.Point(4, 259)
         Me.lbUbicacion.Name = "lbUbicacion"
         Me.lbUbicacion.Size = New System.Drawing.Size(56, 13)
         Me.lbUbicacion.TabIndex = 23
@@ -121,11 +121,10 @@ Partial Class frmReportesInventario
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbUbicacion.DisplayMember = "Id"
         Me.cbUbicacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbUbicacion.FormattingEnabled = True
-        Me.cbUbicacion.Location = New System.Drawing.Point(3, 332)
+        Me.cbUbicacion.Location = New System.Drawing.Point(4, 275)
         Me.cbUbicacion.Name = "cbUbicacion"
-        Me.cbUbicacion.Size = New System.Drawing.Size(226, 21)
+        Me.cbUbicacion.Size = New System.Drawing.Size(220, 21)
         Me.cbUbicacion.TabIndex = 22
         Me.cbUbicacion.ValueMember = "Id"
         '
@@ -133,7 +132,7 @@ Partial Class frmReportesInventario
         '
         Me.lbProveedor.AutoSize = True
         Me.lbProveedor.ForeColor = System.Drawing.Color.White
-        Me.lbProveedor.Location = New System.Drawing.Point(3, 261)
+        Me.lbProveedor.Location = New System.Drawing.Point(4, 210)
         Me.lbProveedor.Name = "lbProveedor"
         Me.lbProveedor.Size = New System.Drawing.Size(61, 13)
         Me.lbProveedor.TabIndex = 21
@@ -145,54 +144,39 @@ Partial Class frmReportesInventario
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbProveedor.DisplayMember = "Id"
         Me.cbProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbProveedor.FormattingEnabled = True
-        Me.cbProveedor.Location = New System.Drawing.Point(3, 283)
+        Me.cbProveedor.Location = New System.Drawing.Point(4, 226)
         Me.cbProveedor.Name = "cbProveedor"
-        Me.cbProveedor.Size = New System.Drawing.Size(226, 21)
+        Me.cbProveedor.Size = New System.Drawing.Size(220, 21)
         Me.cbProveedor.TabIndex = 20
         Me.cbProveedor.ValueMember = "Id"
         '
-        'chFechaExistencia
-        '
-        Me.chFechaExistencia.AutoSize = True
-        Me.chFechaExistencia.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chFechaExistencia.ForeColor = System.Drawing.Color.White
-        Me.chFechaExistencia.Location = New System.Drawing.Point(3, 3)
-        Me.chFechaExistencia.Name = "chFechaExistencia"
-        Me.chFechaExistencia.Size = New System.Drawing.Size(140, 17)
-        Me.chFechaExistencia.TabIndex = 19
-        Me.chFechaExistencia.Text = "Fecha Corte Existencia."
-        Me.chFechaExistencia.UseVisualStyleBackColor = True
-        '
         'dtpFechaExistencia
         '
-        Me.dtpFechaExistencia.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtpFechaExistencia.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.dtpFechaExistencia.CustomFormat = "dd/MM/yyyy hh:mm:tt"
         Me.dtpFechaExistencia.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaExistencia.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpFechaExistencia.Location = New System.Drawing.Point(3, 29)
+        Me.dtpFechaExistencia.Location = New System.Drawing.Point(151, 13)
         Me.dtpFechaExistencia.Name = "dtpFechaExistencia"
-        Me.dtpFechaExistencia.Size = New System.Drawing.Size(225, 21)
+        Me.dtpFechaExistencia.Size = New System.Drawing.Size(150, 21)
         Me.dtpFechaExistencia.TabIndex = 18
-        Me.dtpFechaExistencia.Visible = False
         '
         'txtDescripcion
         '
         Me.txtDescripcion.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtDescripcion.Location = New System.Drawing.Point(3, 227)
+        Me.txtDescripcion.Location = New System.Drawing.Point(4, 171)
         Me.txtDescripcion.Name = "txtDescripcion"
-        Me.txtDescripcion.Size = New System.Drawing.Size(225, 21)
+        Me.txtDescripcion.Size = New System.Drawing.Size(219, 21)
         Me.txtDescripcion.TabIndex = 17
         '
         'lbDescripcion
         '
         Me.lbDescripcion.AutoSize = True
         Me.lbDescripcion.ForeColor = System.Drawing.Color.White
-        Me.lbDescripcion.Location = New System.Drawing.Point(3, 205)
+        Me.lbDescripcion.Location = New System.Drawing.Point(4, 154)
         Me.lbDescripcion.Name = "lbDescripcion"
         Me.lbDescripcion.Size = New System.Drawing.Size(65, 13)
         Me.lbDescripcion.TabIndex = 16
@@ -202,7 +186,7 @@ Partial Class frmReportesInventario
         '
         Me.lbFamilia.AutoSize = True
         Me.lbFamilia.ForeColor = System.Drawing.Color.White
-        Me.lbFamilia.Location = New System.Drawing.Point(3, 153)
+        Me.lbFamilia.Location = New System.Drawing.Point(4, 102)
         Me.lbFamilia.Name = "lbFamilia"
         Me.lbFamilia.Size = New System.Drawing.Size(43, 13)
         Me.lbFamilia.TabIndex = 15
@@ -215,11 +199,10 @@ Partial Class frmReportesInventario
         Me.cbFamilia.DataSource = Me.bsFamilia
         Me.cbFamilia.DisplayMember = "Familia"
         Me.cbFamilia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbFamilia.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbFamilia.FormattingEnabled = True
-        Me.cbFamilia.Location = New System.Drawing.Point(3, 175)
+        Me.cbFamilia.Location = New System.Drawing.Point(4, 119)
         Me.cbFamilia.Name = "cbFamilia"
-        Me.cbFamilia.Size = New System.Drawing.Size(226, 21)
+        Me.cbFamilia.Size = New System.Drawing.Size(220, 21)
         Me.cbFamilia.TabIndex = 14
         Me.cbFamilia.ValueMember = "Id"
         '
@@ -236,11 +219,11 @@ Partial Class frmReportesInventario
         'btVer
         '
         Me.btVer.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btVer.BackgroundImage = Global.KardexInventario.My.Resources.Resources.search
+        Me.btVer.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.search
         Me.btVer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btVer.FlatAppearance.BorderSize = 0
         Me.btVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btVer.Location = New System.Drawing.Point(94, 365)
+        Me.btVer.Location = New System.Drawing.Point(92, 299)
         Me.btVer.Name = "btVer"
         Me.btVer.Size = New System.Drawing.Size(25, 25)
         Me.btVer.TabIndex = 13
@@ -249,7 +232,7 @@ Partial Class frmReportesInventario
         'txtCantidad
         '
         Me.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtCantidad.Location = New System.Drawing.Point(153, 116)
+        Me.txtCantidad.Location = New System.Drawing.Point(154, 65)
         Me.txtCantidad.Name = "txtCantidad"
         Me.txtCantidad.Size = New System.Drawing.Size(71, 21)
         Me.txtCantidad.TabIndex = 5
@@ -258,10 +241,9 @@ Partial Class frmReportesInventario
         'cbComparacion
         '
         Me.cbComparacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbComparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbComparacion.FormattingEnabled = True
         Me.cbComparacion.Items.AddRange(New Object() {"<>", ">=", "<=", "=", ">", "<", "Any"})
-        Me.cbComparacion.Location = New System.Drawing.Point(68, 116)
+        Me.cbComparacion.Location = New System.Drawing.Point(69, 65)
         Me.cbComparacion.Name = "cbComparacion"
         Me.cbComparacion.Size = New System.Drawing.Size(79, 21)
         Me.cbComparacion.TabIndex = 4
@@ -270,7 +252,7 @@ Partial Class frmReportesInventario
         '
         Me.lbExistencia.AutoSize = True
         Me.lbExistencia.ForeColor = System.Drawing.Color.White
-        Me.lbExistencia.Location = New System.Drawing.Point(3, 116)
+        Me.lbExistencia.Location = New System.Drawing.Point(4, 65)
         Me.lbExistencia.Name = "lbExistencia"
         Me.lbExistencia.Size = New System.Drawing.Size(59, 13)
         Me.lbExistencia.TabIndex = 3
@@ -280,7 +262,7 @@ Partial Class frmReportesInventario
         '
         Me.lbBodega.AutoSize = True
         Me.lbBodega.ForeColor = System.Drawing.Color.White
-        Me.lbBodega.Location = New System.Drawing.Point(3, 59)
+        Me.lbBodega.Location = New System.Drawing.Point(4, 8)
         Me.lbBodega.Name = "lbBodega"
         Me.lbBodega.Size = New System.Drawing.Size(47, 13)
         Me.lbBodega.TabIndex = 2
@@ -293,11 +275,10 @@ Partial Class frmReportesInventario
         Me.cbBodega.DataSource = Me.bsBodega
         Me.cbBodega.DisplayMember = "Bodega"
         Me.cbBodega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbBodega.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbBodega.FormattingEnabled = True
-        Me.cbBodega.Location = New System.Drawing.Point(3, 81)
+        Me.cbBodega.Location = New System.Drawing.Point(4, 26)
         Me.cbBodega.Name = "cbBodega"
-        Me.cbBodega.Size = New System.Drawing.Size(226, 21)
+        Me.cbBodega.Size = New System.Drawing.Size(220, 21)
         Me.cbBodega.TabIndex = 1
         Me.cbBodega.ValueMember = "IdBodega"
         '
@@ -314,7 +295,7 @@ Partial Class frmReportesInventario
         Me.crv.Dock = System.Windows.Forms.DockStyle.Fill
         Me.crv.Location = New System.Drawing.Point(0, 0)
         Me.crv.Name = "crv"
-        Me.crv.Size = New System.Drawing.Size(655, 410)
+        Me.crv.Size = New System.Drawing.Size(656, 395)
         Me.crv.TabIndex = 0
         Me.crv.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
@@ -323,9 +304,9 @@ Partial Class frmReportesInventario
         Me.pb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pb.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.pb.Location = New System.Drawing.Point(0, -6)
+        Me.pb.Location = New System.Drawing.Point(0, -1)
         Me.pb.Name = "pb"
-        Me.pb.Size = New System.Drawing.Size(892, 10)
+        Me.pb.Size = New System.Drawing.Size(903, 10)
         Me.pb.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.pb.TabIndex = 11
         Me.pb.Visible = False
@@ -337,8 +318,8 @@ Partial Class frmReportesInventario
         Me.cbReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbReportes.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbReportes.FormattingEnabled = True
-        Me.cbReportes.Items.AddRange(New Object() {"INVENTARIO POR EXISTENCIA", "INVENTARIO POR DESCRIPCIÓN", "INVENTARIO POR FAMILIA", "INVENTARIO POR EXISTENCIA MAX", "INVENTARIO POR EXISTENCIA MIN", "INVENTARIO POR PROVEEDOR", "INVENTARIO CON SERVICIOS", "INVENTARIO POR PEDIR", "INVENTARIO POR PEDIR POR PROVEEDOR", "LISTADO DE PRECIO", "ARTICULOS VENDIDOS", "ARTICULOS VENDIDOS POR PROVEEDOR", "SALDO BODEGA", "INVENTARIO POR UBICACION"})
-        Me.cbReportes.Location = New System.Drawing.Point(301, 12)
+        Me.cbReportes.Items.AddRange(New Object() {"INVENTARIO POR EXISTENCIA", "INVENTARIO POR DESCRIPCIÓN", "INVENTARIO POR FAMILIA RESUMIDO", "INVENTARIO POR FAMILIA", "INVENTARIO POR EXISTENCIA MAX", "INVENTARIO POR EXISTENCIA MIN"})
+        Me.cbReportes.Location = New System.Drawing.Point(307, 12)
         Me.cbReportes.Name = "cbReportes"
         Me.cbReportes.Size = New System.Drawing.Size(291, 24)
         Me.cbReportes.TabIndex = 0
@@ -350,11 +331,11 @@ Partial Class frmReportesInventario
         'btCerrar
         '
         Me.btCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btCerrar.BackgroundImage = Global.KardexInventario.My.Resources.Resources.close
+        Me.btCerrar.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.close
         Me.btCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btCerrar.FlatAppearance.BorderSize = 0
         Me.btCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btCerrar.Location = New System.Drawing.Point(839, 5)
+        Me.btCerrar.Location = New System.Drawing.Point(850, 13)
         Me.btCerrar.Name = "btCerrar"
         Me.btCerrar.Size = New System.Drawing.Size(40, 40)
         Me.btCerrar.TabIndex = 6
@@ -362,11 +343,11 @@ Partial Class frmReportesInventario
         '
         'btFiltro
         '
-        Me.btFiltro.BackgroundImage = Global.KardexInventario.My.Resources.Resources.filter
+        Me.btFiltro.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.filter
         Me.btFiltro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btFiltro.FlatAppearance.BorderSize = 0
         Me.btFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btFiltro.Location = New System.Drawing.Point(4, 12)
+        Me.btFiltro.Location = New System.Drawing.Point(4, 17)
         Me.btFiltro.Name = "btFiltro"
         Me.btFiltro.Size = New System.Drawing.Size(25, 25)
         Me.btFiltro.TabIndex = 7
@@ -376,26 +357,60 @@ Partial Class frmReportesInventario
         'btBuscar
         '
         Me.btBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btBuscar.BackgroundImage = Global.KardexInventario.My.Resources.Resources.search
+        Me.btBuscar.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.search
         Me.btBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btBuscar.FlatAppearance.BorderSize = 0
         Me.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btBuscar.Location = New System.Drawing.Point(598, 12)
+        Me.btBuscar.Location = New System.Drawing.Point(604, 12)
         Me.btBuscar.Name = "btBuscar"
         Me.btBuscar.Size = New System.Drawing.Size(25, 25)
         Me.btBuscar.TabIndex = 12
         Me.btBuscar.UseVisualStyleBackColor = True
+        '
+        'btMax
+        '
+        Me.btMax.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btMax.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.expand
+        Me.btMax.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btMax.FlatAppearance.BorderSize = 0
+        Me.btMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btMax.Location = New System.Drawing.Point(758, 13)
+        Me.btMax.Name = "btMax"
+        Me.btMax.Size = New System.Drawing.Size(40, 40)
+        Me.btMax.TabIndex = 17
+        Me.btMax.Tag = "OFF"
+        Me.btMax.UseVisualStyleBackColor = True
+        '
+        'btMinimizar
+        '
+        Me.btMinimizar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btMinimizar.BackgroundImage = Global.LcPymesKardex.My.Resources.Resources.minimize
+        Me.btMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btMinimizar.FlatAppearance.BorderSize = 0
+        Me.btMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btMinimizar.Location = New System.Drawing.Point(804, 13)
+        Me.btMinimizar.Name = "btMinimizar"
+        Me.btMinimizar.Size = New System.Drawing.Size(40, 40)
+        Me.btMinimizar.TabIndex = 16
+        Me.btMinimizar.UseVisualStyleBackColor = True
+        '
+        'bwCargarReporte
+        '
+        Me.bwCargarReporte.WorkerReportsProgress = True
         '
         'frmReportesInventario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(69, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(891, 461)
+        Me.ClientSize = New System.Drawing.Size(902, 459)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btMax)
+        Me.Controls.Add(Me.btMinimizar)
         Me.Controls.Add(Me.btBuscar)
         Me.Controls.Add(Me.pb)
         Me.Controls.Add(Me.btFiltro)
+        Me.Controls.Add(Me.dtpFechaExistencia)
         Me.Controls.Add(Me.sc)
         Me.Controls.Add(Me.btCerrar)
         Me.Controls.Add(Me.cbReportes)
@@ -439,11 +454,13 @@ Partial Class frmReportesInventario
     Friend WithEvents cbFamilia As ComboBox
     Friend WithEvents txtDescripcion As TextBox
     Friend WithEvents lbDescripcion As Label
-    Friend WithEvents chFechaExistencia As CheckBox
     Friend WithEvents dtpFechaExistencia As DateTimePicker
     Friend WithEvents bsFamilia As BindingSource
     Friend WithEvents lbProveedor As Label
     Friend WithEvents cbProveedor As ComboBox
     Friend WithEvents lbUbicacion As Label
     Friend WithEvents cbUbicacion As ComboBox
+    Friend WithEvents btMax As Button
+    Friend WithEvents btMinimizar As Button
+    Friend WithEvents bwCargarReporte As System.ComponentModel.BackgroundWorker
 End Class

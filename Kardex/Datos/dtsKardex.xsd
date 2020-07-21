@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SeePosConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SeePosConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.KardexInventario.My.MySettings.GlobalReference.Default.SeePosConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SeePosConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SeePosConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.LcPymesKardex.My.MySettings.GlobalReference.Default.SeePosConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables />
         <Sources />
@@ -14,7 +14,7 @@
   <xs:element name="dtsKardex" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dtsKardex" msprop:Generator_UserDSName="dtsKardex">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vs_Kardex" msprop:Generator_TableClassName="vs_KardexDataTable" msprop:Generator_TableVarName="tablevs_Kardex" msprop:Generator_TablePropName="vs_Kardex" msprop:Generator_RowDeletingName="vs_KardexRowDeleting" msprop:Generator_RowChangingName="vs_KardexRowChanging" msprop:Generator_RowEvHandlerName="vs_KardexRowChangeEventHandler" msprop:Generator_RowDeletedName="vs_KardexRowDeleted" msprop:Generator_UserTableName="vs_Kardex" msprop:Generator_RowChangedName="vs_KardexRowChanged" msprop:Generator_RowEvArgName="vs_KardexRowChangeEvent" msprop:Generator_RowClassName="vs_KardexRow">
+        <xs:element name="vs_Kardex" msprop:Generator_TableClassName="vs_KardexDataTable" msprop:Generator_TableVarName="tablevs_Kardex" msprop:Generator_RowChangedName="vs_KardexRowChanged" msprop:Generator_TablePropName="vs_Kardex" msprop:Generator_RowDeletingName="vs_KardexRowDeleting" msprop:Generator_RowChangingName="vs_KardexRowChanging" msprop:Generator_RowEvHandlerName="vs_KardexRowChangeEventHandler" msprop:Generator_RowDeletedName="vs_KardexRowDeleted" msprop:Generator_RowClassName="vs_KardexRow" msprop:Generator_UserTableName="vs_Kardex" msprop:Generator_RowEvArgName="vs_KardexRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
@@ -46,7 +46,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vs_Inventario" msprop:Generator_TableClassName="vs_InventarioDataTable" msprop:Generator_TableVarName="tablevs_Inventario" msprop:Generator_TablePropName="vs_Inventario" msprop:Generator_RowDeletingName="vs_InventarioRowDeleting" msprop:Generator_RowChangingName="vs_InventarioRowChanging" msprop:Generator_RowEvHandlerName="vs_InventarioRowChangeEventHandler" msprop:Generator_RowDeletedName="vs_InventarioRowDeleted" msprop:Generator_UserTableName="vs_Inventario" msprop:Generator_RowChangedName="vs_InventarioRowChanged" msprop:Generator_RowEvArgName="vs_InventarioRowChangeEvent" msprop:Generator_RowClassName="vs_InventarioRow">
+        <xs:element name="vs_Inventario" msprop:Generator_TableClassName="vs_InventarioDataTable" msprop:Generator_TableVarName="tablevs_Inventario" msprop:Generator_RowChangedName="vs_InventarioRowChanged" msprop:Generator_TablePropName="vs_Inventario" msprop:Generator_RowDeletingName="vs_InventarioRowDeleting" msprop:Generator_RowChangingName="vs_InventarioRowChanging" msprop:Generator_RowEvHandlerName="vs_InventarioRowChangeEventHandler" msprop:Generator_RowDeletedName="vs_InventarioRowDeleted" msprop:Generator_RowClassName="vs_InventarioRow" msprop:Generator_UserTableName="vs_Inventario" msprop:Generator_RowEvArgName="vs_InventarioRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo" type="xs:long" />
@@ -77,7 +77,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vs_NavegadorInventario" msprop:Generator_TableClassName="vs_NavegadorInventarioDataTable" msprop:Generator_TableVarName="tablevs_NavegadorInventario" msprop:Generator_RowChangedName="vs_NavegadorInventarioRowChanged" msprop:Generator_TablePropName="vs_NavegadorInventario" msprop:Generator_RowDeletingName="vs_NavegadorInventarioRowDeleting" msprop:Generator_RowChangingName="vs_NavegadorInventarioRowChanging" msprop:Generator_RowEvHandlerName="vs_NavegadorInventarioRowChangeEventHandler" msprop:Generator_RowDeletedName="vs_NavegadorInventarioRowDeleted" msprop:Generator_RowClassName="vs_NavegadorInventarioRow" msprop:Generator_UserTableName="vs_NavegadorInventario" msprop:Generator_RowEvArgName="vs_NavegadorInventarioRowChangeEvent">
+        <xs:element name="vs_NavegadorInventario" msprop:Generator_TableClassName="vs_NavegadorInventarioDataTable" msprop:Generator_TableVarName="tablevs_NavegadorInventario" msprop:Generator_TablePropName="vs_NavegadorInventario" msprop:Generator_RowDeletingName="vs_NavegadorInventarioRowDeleting" msprop:Generator_RowChangingName="vs_NavegadorInventarioRowChanging" msprop:Generator_RowEvHandlerName="vs_NavegadorInventarioRowChangeEventHandler" msprop:Generator_RowDeletedName="vs_NavegadorInventarioRowDeleted" msprop:Generator_UserTableName="vs_NavegadorInventario" msprop:Generator_RowChangedName="vs_NavegadorInventarioRowChanged" msprop:Generator_RowEvArgName="vs_NavegadorInventarioRowChangeEvent" msprop:Generator_RowClassName="vs_NavegadorInventarioRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo" type="xs:string" />
@@ -102,7 +102,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vs_NavegadorInventarioKardex" msprop:Generator_TableClassName="vs_NavegadorInventarioKardexDataTable" msprop:Generator_TableVarName="tablevs_NavegadorInventarioKardex" msprop:Generator_RowChangedName="vs_NavegadorInventarioKardexRowChanged" msprop:Generator_TablePropName="vs_NavegadorInventarioKardex" msprop:Generator_RowDeletingName="vs_NavegadorInventarioKardexRowDeleting" msprop:Generator_RowChangingName="vs_NavegadorInventarioKardexRowChanging" msprop:Generator_RowEvHandlerName="vs_NavegadorInventarioKardexRowChangeEventHandler" msprop:Generator_RowDeletedName="vs_NavegadorInventarioKardexRowDeleted" msprop:Generator_RowClassName="vs_NavegadorInventarioKardexRow" msprop:Generator_UserTableName="vs_NavegadorInventarioKardex" msprop:Generator_RowEvArgName="vs_NavegadorInventarioKardexRowChangeEvent">
+        <xs:element name="vs_NavegadorInventarioKardex" msprop:Generator_TableClassName="vs_NavegadorInventarioKardexDataTable" msprop:Generator_TableVarName="tablevs_NavegadorInventarioKardex" msprop:Generator_TablePropName="vs_NavegadorInventarioKardex" msprop:Generator_RowDeletingName="vs_NavegadorInventarioKardexRowDeleting" msprop:Generator_RowChangingName="vs_NavegadorInventarioKardexRowChanging" msprop:Generator_RowEvHandlerName="vs_NavegadorInventarioKardexRowChangeEventHandler" msprop:Generator_RowDeletedName="vs_NavegadorInventarioKardexRowDeleted" msprop:Generator_UserTableName="vs_NavegadorInventarioKardex" msprop:Generator_RowChangedName="vs_NavegadorInventarioKardexRowChanged" msprop:Generator_RowEvArgName="vs_NavegadorInventarioKardexRowChangeEvent" msprop:Generator_RowClassName="vs_NavegadorInventarioKardexRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
@@ -135,14 +135,14 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TipoDocumento" msprop:Generator_TableClassName="TipoDocumentoDataTable" msprop:Generator_TableVarName="tableTipoDocumento" msprop:Generator_TablePropName="TipoDocumento" msprop:Generator_RowDeletingName="TipoDocumentoRowDeleting" msprop:Generator_RowChangingName="TipoDocumentoRowChanging" msprop:Generator_RowEvHandlerName="TipoDocumentoRowChangeEventHandler" msprop:Generator_RowDeletedName="TipoDocumentoRowDeleted" msprop:Generator_UserTableName="TipoDocumento" msprop:Generator_RowChangedName="TipoDocumentoRowChanged" msprop:Generator_RowEvArgName="TipoDocumentoRowChangeEvent" msprop:Generator_RowClassName="TipoDocumentoRow">
+        <xs:element name="TipoDocumento" msprop:Generator_TableClassName="TipoDocumentoDataTable" msprop:Generator_TableVarName="tableTipoDocumento" msprop:Generator_RowChangedName="TipoDocumentoRowChanged" msprop:Generator_TablePropName="TipoDocumento" msprop:Generator_RowDeletingName="TipoDocumentoRowDeleting" msprop:Generator_RowChangingName="TipoDocumentoRowChanging" msprop:Generator_RowEvHandlerName="TipoDocumentoRowChangeEventHandler" msprop:Generator_RowDeletedName="TipoDocumentoRowDeleted" msprop:Generator_RowClassName="TipoDocumentoRow" msprop:Generator_UserTableName="TipoDocumento" msprop:Generator_RowEvArgName="TipoDocumentoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Tipo" msprop:Generator_ColumnVarNameInTable="columnTipo" msprop:Generator_ColumnPropNameInRow="Tipo" msprop:Generator_ColumnPropNameInTable="TipoColumn" msprop:Generator_UserColumnName="Tipo" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Bodega" msprop:Generator_TableClassName="BodegaDataTable" msprop:Generator_TableVarName="tableBodega" msprop:Generator_TablePropName="Bodega" msprop:Generator_RowDeletingName="BodegaRowDeleting" msprop:Generator_RowChangingName="BodegaRowChanging" msprop:Generator_RowEvHandlerName="BodegaRowChangeEventHandler" msprop:Generator_RowDeletedName="BodegaRowDeleted" msprop:Generator_UserTableName="Bodega" msprop:Generator_RowChangedName="BodegaRowChanged" msprop:Generator_RowEvArgName="BodegaRowChangeEvent" msprop:Generator_RowClassName="BodegaRow">
+        <xs:element name="Bodega" msprop:Generator_TableClassName="BodegaDataTable" msprop:Generator_TableVarName="tableBodega" msprop:Generator_RowChangedName="BodegaRowChanged" msprop:Generator_TablePropName="Bodega" msprop:Generator_RowDeletingName="BodegaRowDeleting" msprop:Generator_RowChangingName="BodegaRowChanging" msprop:Generator_RowEvHandlerName="BodegaRowChangeEventHandler" msprop:Generator_RowDeletedName="BodegaRowDeleted" msprop:Generator_RowClassName="BodegaRow" msprop:Generator_UserTableName="Bodega" msprop:Generator_RowEvArgName="BodegaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Bodega" msdata:Caption="Tipo" msprop:Generator_ColumnVarNameInTable="columnBodega" msprop:Generator_ColumnPropNameInRow="Bodega" msprop:Generator_ColumnPropNameInTable="BodegaColumn" msprop:Generator_UserColumnName="Bodega" type="xs:string" minOccurs="0" />
@@ -150,7 +150,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Familia" msprop:Generator_TableClassName="FamiliaDataTable" msprop:Generator_TableVarName="tableFamilia" msprop:Generator_TablePropName="Familia" msprop:Generator_RowDeletingName="FamiliaRowDeleting" msprop:Generator_RowChangingName="FamiliaRowChanging" msprop:Generator_RowEvHandlerName="FamiliaRowChangeEventHandler" msprop:Generator_RowDeletedName="FamiliaRowDeleted" msprop:Generator_UserTableName="Familia" msprop:Generator_RowChangedName="FamiliaRowChanged" msprop:Generator_RowEvArgName="FamiliaRowChangeEvent" msprop:Generator_RowClassName="FamiliaRow">
+        <xs:element name="Familia" msprop:Generator_TableClassName="FamiliaDataTable" msprop:Generator_TableVarName="tableFamilia" msprop:Generator_RowChangedName="FamiliaRowChanged" msprop:Generator_TablePropName="Familia" msprop:Generator_RowDeletingName="FamiliaRowDeleting" msprop:Generator_RowChangingName="FamiliaRowChanging" msprop:Generator_RowEvHandlerName="FamiliaRowChangeEventHandler" msprop:Generator_RowDeletedName="FamiliaRowDeleted" msprop:Generator_RowClassName="FamiliaRow" msprop:Generator_UserTableName="Familia" msprop:Generator_RowEvArgName="FamiliaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Familia" msdata:Caption="Tipo" msprop:Generator_ColumnVarNameInTable="columnFamilia" msprop:Generator_ColumnPropNameInRow="Familia" msprop:Generator_ColumnPropNameInTable="FamiliaColumn" msprop:Generator_UserColumnName="Familia" type="xs:string" minOccurs="0" />

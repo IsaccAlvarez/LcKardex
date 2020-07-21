@@ -43,7 +43,7 @@ Partial Class frmKardex
         Me.CostoPromedioBodegaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SumaDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.bsKardex = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DtsKardex = New KardexInventario.dtsKardex()
+        Me.DtsKardex = New LcPymesKardex.dtsKardex()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.bwRevisar = New System.ComponentModel.BackgroundWorker()
         Me.pbar = New System.Windows.Forms.ProgressBar()

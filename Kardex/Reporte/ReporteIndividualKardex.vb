@@ -45,7 +45,7 @@ Public Class ReporteIndividualKardex
 
     Public Overrides Property FullResourceName() As String
         Get
-            Return "KardexInventario.ReporteIndividualKardex.rpt"
+            Return "LcPymesKardex.ReporteIndividualKardex.rpt"
         End Get
         Set
             'Do nothing

@@ -8,6 +8,9 @@ Public Class LogicaReportesInventario
     Public Shared Sub Cargar(bw As BackgroundWorker)
         logica.Cargar(bw)
     End Sub
+    Public Shared Sub Cargar(bw As BackgroundWorker, Fecha As DateTime)
+        logica.spRecalculoHistorico(bw, Fecha)
+    End Sub
     Public Shared Function Datos() As LogicaNavegador
 
         Return logica
@@ -29,6 +32,8 @@ Public Class LogicaReportesInventario
         End If
 
         rp.SetDataSource(logica)
+
+        encabezado = fnSucursal() + " " + encabezado
         rp.SetParameterValue("Encabezado", encabezado)
         rp.RecordSelectionFormula = filtroBD
         Return rp
@@ -37,8 +42,20 @@ Public Class LogicaReportesInventario
 
         Dim rp As New ReporteInventarioExistencia
         Dim filtroBD As String = ""
-        filtroBD = "InStr({vs_NavegadorInventario.Bodega},'[" & IdBodega & "]') > 0 AND {vs_NavegadorInventario.Familia} = " & IdFamilia & ""
+        filtroBD = "InStr({vs_NavegadorInventario.Bodega},'[" & IdBodega & "]') > 0 AND {vs_NavegadorInventario.Familia} = '" & IdFamilia & "'"
         rp.SetDataSource(logica)
+        encabezado = fnSucursal() + " " + encabezado
+        rp.SetParameterValue("Encabezado", encabezado)
+        rp.RecordSelectionFormula = filtroBD
+        Return rp
+    End Function
+    Public Shared Function ReporteFamiliaResumido(IdBodega As Integer, encabezado As String) As CrystalDecisions.CrystalReports.Engine.ReportDocument
+
+        Dim rp As New ReporteFamiliaResumido
+        Dim filtroBD As String = ""
+        filtroBD = "InStr({vs_NavegadorInventario.Bodega},'[" & IdBodega & "]') > 0 "
+        rp.SetDataSource(logica)
+        encabezado = fnSucursal() + " " + encabezado
         rp.SetParameterValue("Encabezado", encabezado)
         rp.RecordSelectionFormula = filtroBD
         Return rp
@@ -48,6 +65,7 @@ Public Class LogicaReportesInventario
         Dim filtroBD As String = ""
         filtroBD = "InStr({vs_NavegadorInventario.Bodega},'[" & IdBodega & "]') > 0 AND InStr({vs_NavegadorInventario.Descripcion},'" & Descripcion & "') > 0"
         rp.SetDataSource(logica)
+        encabezado = fnSucursal() + " " + encabezado
         rp.SetParameterValue("Encabezado", encabezado)
         rp.RecordSelectionFormula = filtroBD
         Return rp
@@ -57,6 +75,7 @@ Public Class LogicaReportesInventario
         Dim filtroBD As String = ""
         filtroBD = "InStr({vs_NavegadorInventario.Bodega},'[" & IdBodega & "]') > 0 AND {vs_NavegadorInventario.Existencia} " & Comparacion & " ExistenciaMaxima"
         rp.SetDataSource(logica)
+        encabezado = fnSucursal() + " " + encabezado
         rp.SetParameterValue("Encabezado", encabezado)
         rp.RecordSelectionFormula = filtroBD
         Return rp
@@ -66,6 +85,7 @@ Public Class LogicaReportesInventario
         Dim filtroBD As String = ""
         filtroBD = "InStr({vs_NavegadorInventario.Bodega},'[" & IdBodega & "]') > 0 AND {vs_NavegadorInventario.Existencia} " & Comparacion & " ExistenciaMinima"
         rp.SetDataSource(logica)
+        encabezado = fnSucursal() + " " + encabezado
         rp.SetParameterValue("Encabezado", encabezado)
         rp.RecordSelectionFormula = filtroBD
         Return rp
@@ -75,6 +95,7 @@ Public Class LogicaReportesInventario
         Dim filtroBD As String = ""
         filtroBD = "InStr({vs_NavegadorInventario.Bodega},'[" & IdBodega & "]') > 0 AND InStr({vs_NavegadorInventario.Proveedor},'[" & IdProveedor & "]') > 0"
         rp.SetDataSource(logica)
+        encabezado = fnSucursal() & " - " & encabezado
         rp.SetParameterValue("Encabezado", encabezado)
         rp.RecordSelectionFormula = filtroBD
         Return rp
