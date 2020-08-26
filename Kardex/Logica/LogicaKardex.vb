@@ -2,33 +2,39 @@
 
 Public Class LogicaKardex
     Inherits DatosKardex
+
     Sub spRevisar(ByRef bw As BackgroundWorker)
         Dim i As Integer = 1
+        Dim cantidadProductos As Integer = vs_Inventario.Count
+        Dim CodigoPrevio As Integer = 0
         For Each producto As vs_InventarioRow In vs_Inventario
-            Existencia = 0
-            Saldo = 0
-            CostoPromedio = 0
+
+            If CodigoPrevio <> producto.Codigo Then
+                Existencia = 0
+                Saldo = 0
+                CostoPromedio = 0
+            End If
             ExistenciaBodega = 0
             SaldoBodega = 0
             CostoPromedioBodega = 0
             Dim datos = From linea In vs_Kardex
-                        Where linea.IdInventario = producto.Codigo
+                        Where linea.IdInventario = producto.Codigo And linea.IdBodega = producto.IdBodega
                         Select linea
             For Each kardex As vs_KardexRow In datos
                 spCalcularLinea(kardex)
             Next
-            producto.ExistenciaCorregida = Existencia
-            producto.SaldoCorregido = Saldo
-            producto.CostoPromedioCorregido = CostoPromedio
-            producto.DifCostoPromedio = Math.Abs(producto.CostoPromedio - producto.CostoPromedioCorregido)
-            producto.DifExistencia = Math.Abs(producto.Existencia - producto.ExistenciaCorregida)
-
             producto.SaldoBodegaCorregido = SaldoBodega
             producto.ExistenciaBodegaCorregida = ExistenciaBodega
             producto.CostPromedioBodegaCorregida = CostoPromedioBodega
             producto.DifCostoPromedioBodega = Math.Abs(producto.CostoPromedioBodega - producto.CostPromedioBodegaCorregida)
-            producto.DifExistenciaBodega = Math.Abs(producto.ExistenciaBodega - producto.ExistenciaBodegaCorregida)
-            bw.ReportProgress((i / vs_Kardex.Count) * 100)
+            producto.DifExistenciaBodega = producto.ExistenciaBodega - producto.ExistenciaBodegaCorregida
+
+            producto.ExistenciaCorregida = Existencia
+            producto.SaldoCorregido = Saldo
+            producto.CostoPromedioCorregido = CostoPromedio
+            producto.DifCostoPromedio = Math.Abs(producto.CostoPromedio - producto.CostoPromedioCorregido)
+            producto.DifExistencia = producto.Existencia - producto.ExistenciaCorregida
+            bw.ReportProgress((i / cantidadProductos) * 100)
             i += 1
         Next
 

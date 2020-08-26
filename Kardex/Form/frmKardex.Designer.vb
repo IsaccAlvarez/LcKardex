@@ -23,6 +23,7 @@ Partial Class frmKardex
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmKardex))
         Me.dgvKardex = New System.Windows.Forms.DataGridView()
         Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdInventarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -44,14 +45,13 @@ Partial Class frmKardex
         Me.SumaDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.bsKardex = New System.Windows.Forms.BindingSource(Me.components)
         Me.DtsKardex = New LcPymesKardex.dtsKardex()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.bwRevisar = New System.ComponentModel.BackgroundWorker()
-        Me.pbar = New System.Windows.Forms.ProgressBar()
         Me.dgvCorreciones = New System.Windows.Forms.DataGridView()
         Me.CodigoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ExistenciaDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ExistenciaCorregidaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DifExistencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CostoPromedioDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CostoPromedioCorregidoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -59,22 +59,22 @@ Partial Class frmKardex
         Me.IdBodegaDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ExistenciaBodegaDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ExistenciaBodegaCorregidaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DifExistenciaBodega = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CostoPromedioBodegaDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CostPromedioBodegaCorregidaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoFinalBodegaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoBodegaCorregidoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.bsCorreciones = New System.Windows.Forms.BindingSource(Me.components)
         Me.sc1 = New System.Windows.Forms.SplitContainer()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.lbDiferencia = New System.Windows.Forms.Label()
-        Me.txtSaldoAcumulado = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.bwCorregir = New System.ComponentModel.BackgroundWorker()
-        Me.txtFiltro = New System.Windows.Forms.TextBox()
-        Me.btFiltrar = New System.Windows.Forms.Button()
-        Me.btActualizarGanancia = New System.Windows.Forms.Button()
         Me.bwCorregirGanancia = New System.ComponentModel.BackgroundWorker()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btRevisar = New System.Windows.Forms.ToolStripButton()
+        Me.btAjuste = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.pbar = New System.Windows.Forms.ToolStripProgressBar()
+        Me.lbPorcentaje = New System.Windows.Forms.ToolStripLabel()
         CType(Me.dgvKardex, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsKardex, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DtsKardex, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,6 +84,7 @@ Partial Class frmKardex
         Me.sc1.Panel1.SuspendLayout()
         Me.sc1.Panel2.SuspendLayout()
         Me.sc1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'dgvKardex
@@ -100,7 +101,7 @@ Partial Class frmKardex
         Me.dgvKardex.Name = "dgvKardex"
         Me.dgvKardex.ReadOnly = True
         Me.dgvKardex.RowHeadersVisible = False
-        Me.dgvKardex.Size = New System.Drawing.Size(1050, 297)
+        Me.dgvKardex.Size = New System.Drawing.Size(1022, 326)
         Me.dgvKardex.TabIndex = 0
         '
         'FechaDataGridViewTextBoxColumn
@@ -239,28 +240,9 @@ Partial Class frmKardex
         Me.DtsKardex.DataSetName = "dtsKardex"
         Me.DtsKardex.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(8, 12)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(151, 26)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Revisar"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'bwRevisar
         '
         Me.bwRevisar.WorkerReportsProgress = True
-        '
-        'pbar
-        '
-        Me.pbar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pbar.Location = New System.Drawing.Point(322, 15)
-        Me.pbar.Name = "pbar"
-        Me.pbar.Size = New System.Drawing.Size(736, 23)
-        Me.pbar.TabIndex = 4
-        Me.pbar.Visible = False
         '
         'dgvCorreciones
         '
@@ -269,14 +251,14 @@ Partial Class frmKardex
         Me.dgvCorreciones.AllowUserToResizeRows = False
         Me.dgvCorreciones.AutoGenerateColumns = False
         Me.dgvCorreciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCorreciones.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.ExistenciaDataGridViewTextBoxColumn1, Me.ExistenciaCorregidaDataGridViewTextBoxColumn, Me.CostoPromedioDataGridViewTextBoxColumn1, Me.CostoPromedioCorregidoDataGridViewTextBoxColumn, Me.SaldoDataGridViewTextBoxColumn1, Me.SaldoCorregidoDataGridViewTextBoxColumn, Me.IdBodegaDataGridViewTextBoxColumn1, Me.ExistenciaBodegaDataGridViewTextBoxColumn1, Me.ExistenciaBodegaCorregidaDataGridViewTextBoxColumn, Me.CostoPromedioBodegaDataGridViewTextBoxColumn1, Me.CostPromedioBodegaCorregidaDataGridViewTextBoxColumn, Me.SaldoFinalBodegaDataGridViewTextBoxColumn, Me.SaldoBodegaCorregidoDataGridViewTextBoxColumn})
+        Me.dgvCorreciones.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.ExistenciaDataGridViewTextBoxColumn1, Me.ExistenciaCorregidaDataGridViewTextBoxColumn, Me.DifExistencia, Me.CostoPromedioDataGridViewTextBoxColumn1, Me.CostoPromedioCorregidoDataGridViewTextBoxColumn, Me.SaldoDataGridViewTextBoxColumn1, Me.SaldoCorregidoDataGridViewTextBoxColumn, Me.IdBodegaDataGridViewTextBoxColumn1, Me.ExistenciaBodegaDataGridViewTextBoxColumn1, Me.ExistenciaBodegaCorregidaDataGridViewTextBoxColumn, Me.DifExistenciaBodega, Me.CostoPromedioBodegaDataGridViewTextBoxColumn1, Me.CostPromedioBodegaCorregidaDataGridViewTextBoxColumn, Me.SaldoFinalBodegaDataGridViewTextBoxColumn, Me.SaldoBodegaCorregidoDataGridViewTextBoxColumn})
         Me.dgvCorreciones.DataSource = Me.bsCorreciones
         Me.dgvCorreciones.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvCorreciones.Location = New System.Drawing.Point(0, 0)
         Me.dgvCorreciones.Name = "dgvCorreciones"
         Me.dgvCorreciones.ReadOnly = True
         Me.dgvCorreciones.RowHeadersVisible = False
-        Me.dgvCorreciones.Size = New System.Drawing.Size(1050, 182)
+        Me.dgvCorreciones.Size = New System.Drawing.Size(1022, 198)
         Me.dgvCorreciones.TabIndex = 5
         '
         'CodigoDataGridViewTextBoxColumn
@@ -306,6 +288,13 @@ Partial Class frmKardex
         Me.ExistenciaCorregidaDataGridViewTextBoxColumn.HeaderText = "ExistenciaCorregida"
         Me.ExistenciaCorregidaDataGridViewTextBoxColumn.Name = "ExistenciaCorregidaDataGridViewTextBoxColumn"
         Me.ExistenciaCorregidaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DifExistencia
+        '
+        Me.DifExistencia.DataPropertyName = "DifExistencia"
+        Me.DifExistencia.HeaderText = "Ajuste"
+        Me.DifExistencia.Name = "DifExistencia"
+        Me.DifExistencia.ReadOnly = True
         '
         'CostoPromedioDataGridViewTextBoxColumn1
         '
@@ -356,6 +345,13 @@ Partial Class frmKardex
         Me.ExistenciaBodegaCorregidaDataGridViewTextBoxColumn.Name = "ExistenciaBodegaCorregidaDataGridViewTextBoxColumn"
         Me.ExistenciaBodegaCorregidaDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'DifExistenciaBodega
+        '
+        Me.DifExistenciaBodega.DataPropertyName = "DifExistenciaBodega"
+        Me.DifExistenciaBodega.HeaderText = "Ajuste Bodega"
+        Me.DifExistenciaBodega.Name = "DifExistenciaBodega"
+        Me.DifExistenciaBodega.ReadOnly = True
+        '
         'CostoPromedioBodegaDataGridViewTextBoxColumn1
         '
         Me.CostoPromedioBodegaDataGridViewTextBoxColumn1.DataPropertyName = "CostoPromedioBodega"
@@ -394,7 +390,7 @@ Partial Class frmKardex
         Me.sc1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.sc1.Location = New System.Drawing.Point(8, 73)
+        Me.sc1.Location = New System.Drawing.Point(8, 28)
         Me.sc1.Name = "sc1"
         Me.sc1.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -405,18 +401,9 @@ Partial Class frmKardex
         'sc1.Panel2
         '
         Me.sc1.Panel2.Controls.Add(Me.dgvKardex)
-        Me.sc1.Size = New System.Drawing.Size(1050, 483)
-        Me.sc1.SplitterDistance = 182
+        Me.sc1.Size = New System.Drawing.Size(1022, 528)
+        Me.sc1.SplitterDistance = 198
         Me.sc1.TabIndex = 6
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(8, 41)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(151, 26)
-        Me.Button1.TabIndex = 7
-        Me.Button1.Text = "Filtrar Diferencias"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'lbDiferencia
         '
@@ -426,85 +413,65 @@ Partial Class frmKardex
         Me.lbDiferencia.Size = New System.Drawing.Size(0, 13)
         Me.lbDiferencia.TabIndex = 8
         '
-        'txtSaldoAcumulado
-        '
-        Me.txtSaldoAcumulado.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSaldoAcumulado.Location = New System.Drawing.Point(893, 45)
-        Me.txtSaldoAcumulado.Name = "txtSaldoAcumulado"
-        Me.txtSaldoAcumulado.ReadOnly = True
-        Me.txtSaldoAcumulado.Size = New System.Drawing.Size(165, 20)
-        Me.txtSaldoAcumulado.TabIndex = 9
-        Me.txtSaldoAcumulado.Text = "0"
-        Me.txtSaldoAcumulado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label1
-        '
-        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(746, 48)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(141, 13)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Saldo Acumulado Corregido:"
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(165, 12)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(151, 26)
-        Me.Button3.TabIndex = 11
-        Me.Button3.Text = "Aplicar Cambios"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
         'bwCorregir
         '
         Me.bwCorregir.WorkerReportsProgress = True
-        '
-        'txtFiltro
-        '
-        Me.txtFiltro.Location = New System.Drawing.Point(322, 48)
-        Me.txtFiltro.Name = "txtFiltro"
-        Me.txtFiltro.Size = New System.Drawing.Size(189, 20)
-        Me.txtFiltro.TabIndex = 12
-        '
-        'btFiltrar
-        '
-        Me.btFiltrar.Location = New System.Drawing.Point(517, 45)
-        Me.btFiltrar.Name = "btFiltrar"
-        Me.btFiltrar.Size = New System.Drawing.Size(151, 26)
-        Me.btFiltrar.TabIndex = 13
-        Me.btFiltrar.Text = "Filtro"
-        Me.btFiltrar.UseVisualStyleBackColor = True
-        '
-        'btActualizarGanancia
-        '
-        Me.btActualizarGanancia.Location = New System.Drawing.Point(165, 41)
-        Me.btActualizarGanancia.Name = "btActualizarGanancia"
-        Me.btActualizarGanancia.Size = New System.Drawing.Size(151, 26)
-        Me.btActualizarGanancia.TabIndex = 14
-        Me.btActualizarGanancia.Text = "Actualizar Ganancia"
-        Me.btActualizarGanancia.UseVisualStyleBackColor = True
         '
         'bwCorregirGanancia
         '
         Me.bwCorregirGanancia.WorkerReportsProgress = True
         '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btRevisar, Me.btAjuste, Me.ToolStripSeparator1, Me.pbar, Me.lbPorcentaje})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1042, 25)
+        Me.ToolStrip1.TabIndex = 17
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btRevisar
+        '
+        Me.btRevisar.Image = CType(resources.GetObject("btRevisar.Image"), System.Drawing.Image)
+        Me.btRevisar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btRevisar.Name = "btRevisar"
+        Me.btRevisar.Size = New System.Drawing.Size(64, 22)
+        Me.btRevisar.Text = "Revisar"
+        Me.btRevisar.ToolTipText = "Revisar"
+        '
+        'btAjuste
+        '
+        Me.btAjuste.Image = CType(resources.GetObject("btAjuste.Image"), System.Drawing.Image)
+        Me.btAjuste.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btAjuste.Name = "btAjuste"
+        Me.btAjuste.Size = New System.Drawing.Size(79, 22)
+        Me.btAjuste.Text = "Ver Ajuste"
+        Me.btAjuste.Visible = False
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'pbar
+        '
+        Me.pbar.Name = "pbar"
+        Me.pbar.Size = New System.Drawing.Size(100, 22)
+        '
+        'lbPorcentaje
+        '
+        Me.lbPorcentaje.Name = "lbPorcentaje"
+        Me.lbPorcentaje.Size = New System.Drawing.Size(0, 22)
+        '
         'frmKardex
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1070, 557)
-        Me.Controls.Add(Me.btActualizarGanancia)
-        Me.Controls.Add(Me.btFiltrar)
-        Me.Controls.Add(Me.txtFiltro)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.txtSaldoAcumulado)
+        Me.BackColor = System.Drawing.Color.DimGray
+        Me.ClientSize = New System.Drawing.Size(1042, 557)
         Me.Controls.Add(Me.lbDiferencia)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.sc1)
-        Me.Controls.Add(Me.pbar)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Name = "frmKardex"
         Me.Text = "Kardex"
         CType(Me.dgvKardex, System.ComponentModel.ISupportInitialize).EndInit()
@@ -516,6 +483,8 @@ Partial Class frmKardex
         Me.sc1.Panel2.ResumeLayout(False)
         CType(Me.sc1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.sc1.ResumeLayout(False)
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -524,7 +493,6 @@ Partial Class frmKardex
     Friend WithEvents dgvKardex As DataGridView
     Friend WithEvents bsKardex As BindingSource
     Friend WithEvents DtsKardex As dtsKardex
-    Friend WithEvents Button2 As Button
     Friend WithEvents FechaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IdInventarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IdBodegaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -544,12 +512,17 @@ Partial Class frmKardex
     Friend WithEvents CostoPromedioBodegaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SumaDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
     Friend WithEvents bwRevisar As System.ComponentModel.BackgroundWorker
-    Friend WithEvents pbar As ProgressBar
     Friend WithEvents dgvCorreciones As DataGridView
+    Friend WithEvents bsCorreciones As BindingSource
+    Friend WithEvents sc1 As SplitContainer
+    Friend WithEvents lbDiferencia As Label
+    Friend WithEvents bwCorregir As System.ComponentModel.BackgroundWorker
+    Friend WithEvents bwCorregirGanancia As System.ComponentModel.BackgroundWorker
     Friend WithEvents CodigoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DescripcionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ExistenciaDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents ExistenciaCorregidaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DifExistencia As DataGridViewTextBoxColumn
     Friend WithEvents CostoPromedioDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents CostoPromedioCorregidoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
@@ -557,20 +530,15 @@ Partial Class frmKardex
     Friend WithEvents IdBodegaDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents ExistenciaBodegaDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents ExistenciaBodegaCorregidaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DifExistenciaBodega As DataGridViewTextBoxColumn
     Friend WithEvents CostoPromedioBodegaDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents CostPromedioBodegaCorregidaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoFinalBodegaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoBodegaCorregidoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents bsCorreciones As BindingSource
-    Friend WithEvents sc1 As SplitContainer
-    Friend WithEvents Button1 As Button
-    Friend WithEvents lbDiferencia As Label
-    Friend WithEvents txtSaldoAcumulado As TextBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Button3 As Button
-    Friend WithEvents bwCorregir As System.ComponentModel.BackgroundWorker
-    Friend WithEvents txtFiltro As TextBox
-    Friend WithEvents btFiltrar As Button
-    Friend WithEvents btActualizarGanancia As Button
-    Friend WithEvents bwCorregirGanancia As System.ComponentModel.BackgroundWorker
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btRevisar As ToolStripButton
+    Friend WithEvents pbar As ToolStripProgressBar
+    Friend WithEvents lbPorcentaje As ToolStripLabel
+    Friend WithEvents btAjuste As ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
 End Class

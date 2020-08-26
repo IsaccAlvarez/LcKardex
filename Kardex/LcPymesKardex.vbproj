@@ -15,6 +15,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,7 +28,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -96,6 +96,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjusteInventario.vb" />
+    <Compile Include="Datos\DatosAjusteInventario.vb" />
     <Compile Include="Datos\DatosKardex.vb" />
     <Compile Include="Datos\Conexion\clsConexion.vb" />
     <Compile Include="Datos\Conexion\clsDatos.vb" />
@@ -139,6 +141,12 @@
     <Compile Include="Form\frmReportesInventario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FrmVistaAjuste.Designer.vb">
+      <DependentUpon>FrmVistaAjuste.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmVistaAjuste.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmTest.Designer.vb">
       <DependentUpon>frmTest.vb</DependentUpon>
     </Compile>
@@ -146,6 +154,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Kardex.vb" />
+    <Compile Include="Logica\LogicaAjusteInventario.vb" />
     <Compile Include="Logica\LogicaKardex.vb" />
     <Compile Include="Logica\LogicaNavegador.vb" />
     <Compile Include="Logica\LogicaReportesInventario.vb" />
@@ -192,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmReportesInventario.resx">
       <DependentUpon>frmReportesInventario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVistaAjuste.resx">
+      <DependentUpon>FrmVistaAjuste.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTest.resx">
       <DependentUpon>frmTest.vb</DependentUpon>

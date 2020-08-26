@@ -5,16 +5,14 @@ Public Class DatosKardex
     Inherits dtsKardex
     Protected Friend Sub spDatos()
         spComprobarBD()
-        Dim consulta As String = "SELECT k.Fecha, i.Descripcion AS Inventario, k.IdInventario, k.Tipo, k.IdLinea, k.IdDocumento, k.Documento, k.IdMoneda, k.IdBodega, k.Cantidad, k.Costo, k.TipoCambio,k.Suma, 0 AS CostoPromedio, 0 As Existencia, 0 As Saldo FROM vs_Kardex AS k INNER JOIN  Inventario AS i ON k.IdInventario = i.Codigo WHERE i.Servicio = 0 AND i.Inhabilitado = 0 ORDER BY k.IdInventario, k.Fecha"
+
         Dim sqlCo As New SqlClient.SqlCommand
-        sqlCo.CommandText = consulta
-        clsDatos.consulta(sqlCo, vs_Kardex, "SEEPOS")
 
         sqlCo.CommandText = "Select * From vs_Inventario"
         clsDatos.consulta(sqlCo, vs_Inventario, "SEEPOS")
 
-
-
+        sqlCo.CommandText = "SELECT k.Fecha, i.Descripcion AS Inventario, k.IdInventario, k.Tipo, k.IdLinea, k.IdDocumento, k.Documento, k.IdMoneda, k.IdBodega, k.Cantidad, k.Costo, k.TipoCambio,k.Suma, 0 AS CostoPromedio, 0 As Existencia, 0 As Saldo FROM vs_Kardex AS k INNER JOIN  Inventario AS i ON k.IdInventario = i.Codigo WHERE i.Servicio = 0 AND i.Inhabilitado = 0 ORDER BY k.IdInventario, k.Fecha"
+        clsDatos.consulta(sqlCo, vs_Kardex, "SEEPOS")
     End Sub
     Friend Sub spActualizarDatos(linea As vs_InventarioRow)
 
